@@ -1,0 +1,16 @@
+{
+  "parser": "babel-eslint",
+  "extends": "airbnb/base",
+  "env": {
+    "jquery": true
+  },
+  "rules": {
+    "func-names": 0,
+    "no-new": 0,
+    "new-cap": 0,
+  },
+  "plugins": ["vue","html"],
+  "globals": {
+    "Vue": true
+  }
+}

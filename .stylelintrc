@@ -1,0 +1,8 @@
+{
+  "extends": "stylelint-config-standard",
+  "rules": {
+    "string-quotes": "single",
+    "max-nesting-depth": 2,
+    "number-leading-zero": "never"
+  }
+}
