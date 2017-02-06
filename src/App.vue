@@ -2,7 +2,7 @@
   <div id="app" >
     <div class="hello">
       <h1>{{ title }}</h1>
-      <ul>
+      <ul class="items">
         <li><a href="http://w3cay.com/blog/" target="_blank">博客</a></li>/
         <li><a href="https://github.com/w3cay" target="_blank">代码</a></li>/
         <li><a href="http://weibo.com/633012550" target="_blank">微博</a></li>/
@@ -42,6 +42,7 @@
         <i class="foot right" :class="{'right-lift': status.foot.lift }"></i>
       </footer>
     </div>
+    <comment></comment>
     <footer class="copyright">© 安望云海 ❤️</footer>
   </div>
 </template>
@@ -49,6 +50,7 @@
 <script>
 /* global window,document */
 /* eslint no-param-reassign: ["error", { "props": false }]*/
+import Comment from './components/comment.vue';
 
 export default {
   name: 'app',
@@ -76,7 +78,7 @@ export default {
           high: 5,
           low: 1,
         },
-        words: '(｡･∀･)ﾉﾞ嗨。欢迎来到安望云海。我是安望云海的小管家。我身上有很多开关，请不要乱动哦',
+        words: 'Hi，你好！。欢迎来访！。',
       },
     };
   },
@@ -95,6 +97,7 @@ export default {
     },
   },
   components: {
+    Comment,
   },
   created() {
     this.say();
@@ -194,8 +197,8 @@ $body-color: #98d43a;
 
 html,body {
     width: 100%;
-    height: 100%;
-    overflow: hidden;
+    // height: 100%;
+    // overflow: hidden;
     margin: 0;
 }
 
@@ -518,11 +521,17 @@ a {
 }
 
 .copyright {
-  position: absolute;
-  bottom: 10px;
+  // position: absolute;
+  // bottom: 10px;
   text-align: center;
   display: block;
   width: 100%;
+  margin-bottom: 20px;
 }
 
+.items {
+  a {
+    text-decoration: none;
+  }
+}
 </style>

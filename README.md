@@ -1,9 +1,6 @@
-# Bright's robot
-
-> A Vue.js project
+# [安望云海](http://w3cay.com) 🤖
 
 ## Build Setup
-
 
 ``` bash
 # install dependencies
@@ -22,4 +19,4 @@ npm run e2e
 npm test
 ```
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+[![Packagist](https://img.shields.io/packagist/l/doctrine/orm.svg)]()
