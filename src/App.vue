@@ -34,7 +34,7 @@
         <i class="foot right" :class="{'right-lift': status.foot.lift }"></i>
       </footer>
     </div>
-    <comment></comment>
+    <!-- <comment></comment> -->
     <footer class="copyright">© 安望云海 ❤️</footer>
   </div>
 </template>
@@ -190,8 +190,8 @@ $body-color: #98d43a;
 
 html,body {
     width: 100%;
-    // height: 100%;
-    // overflow: hidden;
+    height: 100%;
+    overflow: hidden;
     margin: 0;
 }
 
@@ -514,8 +514,8 @@ a {
 }
 
 .copyright {
-  // position: absolute;
-  // bottom: 10px;
+  position: absolute;
+  bottom: 10px;
   text-align: center;
   display: block;
   width: 100%;
