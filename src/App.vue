@@ -1,7 +1,8 @@
 <template>
   <div id="app" >
     <index></index>
-    <div id="robot" v-on:mouseover="eyesMove($event)" v-on:mouseout="eyesReset()">
+    <div id="robot" v-on:mouseover="eyesMove($event)" v-on:mouseout="eyesReset()"
+    :class="{'move': status.foot.lift }">
       <div class="bubble" v-show="status.words">
         {{status.words}}
       </div>
@@ -70,7 +71,7 @@ export default {
           high: 5,
           low: 1,
         },
-        words: 'Hi，你好！。欢迎来访！。',
+        words: 'Hi，你好！。欢迎来访！。是Bright的小助理。您可以通过上方的传送门寻找Bright的踪迹',
       },
     };
   },
@@ -175,6 +176,11 @@ export default {
     },
     walk() {
       this.status.foot.lift = !this.status.foot.lift;
+      if (this.status.foot.lift) {
+        this.actions('amazed');
+      } else {
+        this.actions('');
+      }
     },
     eyesReset() {
       this.status.eye.left = this.parms.eye.middle;
@@ -193,10 +199,12 @@ html,body {
     height: 100%;
     overflow: hidden;
     margin: 0;
+    background: url(./assets/science.jpg);
 }
 
 h1, h2 {
   font-weight: normal;
+  font-size: 36px;
 }
 
 ul {
@@ -210,7 +218,7 @@ li {
 }
 
 a {
-  color: #42b983;
+  color: #3f9c71;
   font-size: 18px;
 }
 
@@ -232,6 +240,9 @@ a {
   position: relative;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
+  &.move {
+    animation: move 3s linear infinite;
+  }
 
   i {
     font-style: normal;
@@ -507,6 +518,24 @@ a {
       }
       100% {
         top: 6px;
+      }
+    }
+
+    @keyframes move {
+      0% {
+        transform: translateX(0);
+      }
+      25% {
+        transform: translateX(-10%);
+      }
+      50% {
+        transform: translateX(0%);
+      }
+      75% {
+        transform: translateX(10%);
+      }
+      100% {
+        transform: translateX(0);
       }
     }
 
