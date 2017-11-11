@@ -199,7 +199,7 @@ html,body {
     height: 100%;
     overflow: hidden;
     margin: 0;
-    background: url(http://w3cay.com/static/img/science.e6f8147.jpg);
+    background: url(~/static/img/science.jpg);
 }
 
 h1, h2 {
