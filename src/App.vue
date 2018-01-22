@@ -36,7 +36,11 @@
       </footer>
     </div>
     <!-- <comment></comment> -->
-    <footer class="copyright">© 安望云海 ❤️</footer>
+    <footer class="copyright">
+      <p>© 安望云海 ❤️</p>
+      <p class="host">Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+    </footer>
+
   </div>
 </template>
 
@@ -549,6 +553,10 @@ a {
   display: block;
   width: 100%;
   margin-bottom: 20px;
+}
+
+p.host, .host a {
+  font-size: 13px;
 }
 
 
