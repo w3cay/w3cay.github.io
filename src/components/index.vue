@@ -2,7 +2,7 @@
   <div class="hello">
     <h1>{{ title }}</h1>
     <ul class="items">
-      <li><a href="https://github.com/w3cay/blog/issues"
+      <li><a href="http://w3cay.com/blog"
           onclick="_czc.push(['_trackEvent', '链接', '点击', '博客','1','blog']);"
           target="_blank">博客</a></li>/
       <li><a href="https://github.com/w3cay"
