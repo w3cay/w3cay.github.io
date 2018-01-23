@@ -35,7 +35,6 @@
         <i class="foot right" :class="{'right-lift': status.foot.lift }"></i>
       </footer>
     </div>
-    <!-- <comment></comment> -->
     <footer class="copyright">
       <p>© 安望云海 ❤️</p>
       <p class="host">Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
@@ -47,7 +46,6 @@
 <script>
 /* global window,document */
 /* eslint no-param-reassign: ["error", { "props": false }]*/
-import Comment from './components/comment.vue';
 import Index from './components/index.vue';
 
 export default {
@@ -75,7 +73,7 @@ export default {
           high: 5,
           low: 1,
         },
-        words: 'Hi，你好！。欢迎来访！。是Bright的小助理。您可以通过上方的传送门寻找Bright的踪迹',
+        words: 'Hi，你好！。我是小安。欢迎访问',
       },
     };
   },
@@ -94,7 +92,6 @@ export default {
     },
   },
   components: {
-    Comment,
     Index,
   },
   created() {
@@ -203,7 +200,7 @@ html,body {
     height: 100%;
     overflow: hidden;
     margin: 0;
-    background: url(~/static/img/science.jpg);
+    // background: url(~/static/img/science.jpg);
 }
 
 h1, h2 {
