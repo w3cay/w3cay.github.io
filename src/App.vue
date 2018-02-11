@@ -1,48 +1,55 @@
 <template>
-  <div id="app" >
-    <index></index>
-    <div id="robot" v-on:mouseover="eyesMove($event)" v-on:mouseout="eyesReset()"
-    :class="{'move': status.foot.lift }">
-      <div class="bubble" v-show="status.words">
+  <div id="app">
+    <div id="robot"
+      v-on:mouseover="eyesMove($event)"
+      v-on:mouseout="eyesReset()"
+      :class="{'move': status.foot.lift }">
+      <div class="bubble"
+        v-show="status.words">
         {{status.words}}
       </div>
       <header class="head">
         <i class="mast"></i>
         <i class="eyes left"
-        @click="actions('say',{text: '戳到我的眼睛了！', mood: 'angry'})">
+          @click="actions('say',{text: '戳到我的眼睛了！', mood: 'angry'})">
         <i class="dot" :style="eyeStyle"></i>
-      </i>
+        </i>
         <i class="eyes right"
-        @click="actions('say',{text: '戳到我的眼睛了！', mood: 'angry'})">
+          @click="actions('say',{text: '戳到我的眼睛了！', mood: 'angry'})">
         <i class="dot" :style="eyeStyle"></i>
-      </i>
-        <i class="mouse" @click="actions('say',{text: '信不信我咬你~', mood: 'angry'})">{{status.mouse}}</i>
+        </i>
+        <i class="mouse"
+          @click="actions('say',{text: '信不信我咬你~', mood: 'angry'})">{{status.mouse}}</i>
       </header>
-
       <section class="body">
+        <i class="lingjie"></i>
         <i class="collar"></i>
         <i class="fastener"></i>
         <i class="fastener"></i>
       </section>
-
       <section class="arms">
-        <i class="arm left" :style="armLeftStyle"  @click="armsMove('left', -30, 1000)"></i>
-        <i class="arm right" :style="armRightStyle" @click="armsMove('right', -30, 1000)"></i>
+        <i class="arm left"
+          :style="armLeftStyle"
+          @click="armsMove('left', -30, 1000)"></i>
+        <i class="arm right"
+          :style="armRightStyle"
+          @click="armsMove('right', -30, 1000)"></i>
       </section>
-
-      <footer class="footer" @click="walk()">
-        <i class="foot left" :class="{'left-lift': status.foot.lift }"></i>
-        <i class="foot right" :class="{'right-lift': status.foot.lift }"></i>
+      <footer class="footer"
+        @click="walk()">
+        <i class="foot left"
+          :class="{'left-lift': status.foot.lift }"></i>
+        <i class="foot right"
+          :class="{'right-lift': status.foot.lift }"></i>
       </footer>
     </div>
     <footer class="copyright">
       <p>© 安望云海 ❤️</p>
-      <p class="host">Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+      <p class="host">Hosted by <a href="https://pages.coding.me"
+          style="font-weight: bold">Coding Pages</a></p>
     </footer>
-
   </div>
 </template>
-
 <script>
 /* global window,document */
 /* eslint no-param-reassign: ["error", { "props": false }]*/
@@ -163,14 +170,14 @@ export default {
     eyesMove(e) {
       if (e) {
         const X = e.clientX - (window.innerWidth / 2) > 0 ?
-         this.parms.eye.high : this.parms.eye.low;
+          this.parms.eye.high : this.parms.eye.low;
 
         const Y = (
-          document.querySelector('#robot').offsetTop +
-          document.querySelector('.head').offsetTop +
-          document.querySelector('.eyes').offsetTop
-        ) - e.clientY > 0 ?
-         this.parms.eye.low : this.parms.eye.high;
+            document.querySelector('#robot').offsetTop +
+            document.querySelector('.head').offsetTop +
+            document.querySelector('.eyes').offsetTop
+          ) - e.clientY > 0 ?
+          this.parms.eye.low : this.parms.eye.high;
         this.status.eye.left = X;
         this.status.eye.top = Y;
       }
@@ -189,21 +196,22 @@ export default {
     },
   },
 };
-</script>
 
+</script>
 <style lang='scss'>
 $body-border: #f0f0f0;
 $body-color: #98d43a;
 
-html,body {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    margin: 0;
-    // background: url(~/static/img/science.jpg);
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  margin: 0; // background: url(~/static/img/science.jpg);
 }
 
-h1, h2 {
+h1,
+h2 {
   font-weight: normal;
   font-size: 36px;
 }
@@ -232,10 +240,10 @@ a {
   user-select: none;
   margin-top: 100px;
 }
+
 #robot {
   width: 200px;
-  height: 250px;
-  // border: 1px solid #f0f0f0;
+  height: 250px; // border: 1px solid #f0f0f0;
   margin: auto;
   padding: 10px;
   position: relative;
@@ -256,8 +264,7 @@ a {
     padding: 3px 8px;
     border-radius: 10px;
     font-size: 14px;
-    width: 100px;
-    // max-height: 50px;
+    width: 100px; // max-height: 50px;
     left: 170px;
     text-align: center;
     z-index: 20;
@@ -310,8 +317,7 @@ a {
       }
     }
 
-    @keyframes light-blink
-    {
+    @keyframes light-blink {
       0% {
         background-color: #8bf939;
       }
@@ -354,23 +360,22 @@ a {
       }
     }
 
-    &:hover .eyes{
+    &:hover .eyes {
       animation: none;
     }
 
-    @keyframes blink
-    {
+    @keyframes blink {
       0% {
         height: 10px;
       }
       5% {
-        height:0px;
+        height: 0px;
       }
       10% {
-        height:10px;
+        height: 10px;
       }
       100% {
-        height:10px;
+        height: 10px;
       }
     }
 
@@ -388,24 +393,36 @@ a {
 
   .body {
     border: 2px solid #796a6a;
-    background-color: $body-color;
+    background-color: #7c898e;
+    ;
     width: 100px;
     height: 100px;
     border-radius: 10px;
-    margin:2px auto 0;
+    margin: 2px auto 0;
     position: relative;
     z-index: 3;
     overflow: hidden;
+
+    .lingjie {
+      width: 30px;
+      height: 28px;
+      background: url(./assets/lingjie.png) no-repeat 0 0 / 100% 100%;
+      display: block;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 9;
+      top: -6px;
+    }
 
     .collar {
       display: block;
       width: 50px;
       height: 50px;
-      transform: rotate(45deg) ;
+      transform: rotate(45deg);
       margin: -40px auto 30px;
       border: 1px solid #000;
       background-color: #fff;
-
     }
 
     .fastener {
@@ -417,45 +434,44 @@ a {
       background-color: #a28686;
       border-radius: 50%;
     }
-
   }
 
- .arms {
-   .arm {
-     z-index: 14;
-     background-color: $body-color;
-     top: 120px;
-     width: 60px;
-     height: 10px;
-     display: inline-block;
-     border: 2px solid #796a6a;
-     position: absolute;
-     border-left: 0;
+  .arms {
+    .arm {
+      z-index: 14;
+      background-color: #cadeab;
+      top: 120px;
+      width: 60px;
+      height: 10px;
+      display: inline-block;
+      border: 2px solid #796a6a;
+      position: absolute;
+      border-left: 0;
 
-     &:after {
-       content: '';
-       display: inline-block;
-       width: 10px;
-       height: 13px;
-       border: 2px solid #796a6a;
-       position: absolute;
-       right: -10px;
-       border-radius: 10px;
-       top: -3px;
-       background-color: #fff;
-     }
-   }
+      &:after {
+        content: '';
+        display: inline-block;
+        width: 10px;
+        height: 13px;
+        border: 2px solid #796a6a;
+        position: absolute;
+        right: -10px;
+        border-radius: 10px;
+        top: -3px;
+        background-color: #fff;
+      }
+    }
 
-   .left {
-     transform-origin: 0 0;
-     transform: translateX(-70%) scaleX(-1) rotate(45deg);
-   }
+    .left {
+      transform-origin: 0 0;
+      transform: translateX(-70%) scaleX(-1) rotate(45deg);
+    }
 
-   .right {
-     transform-origin: 0 0;
-     transform: translateX(70%) rotate(45deg);
-   }
- }
+    .right {
+      transform-origin: 0 0;
+      transform: translateX(70%) rotate(45deg);
+    }
+  }
 
   .footer {
     width: 100px;
@@ -491,11 +507,11 @@ a {
     }
 
     .left-lift:after {
-        animation: leftlift .5s ease infinite;
+      animation: leftlift .5s ease infinite;
     }
 
     .right-lift:after {
-        animation: rightlift .5s ease infinite;
+      animation: rightlift .5s ease infinite;
     }
 
     @keyframes leftlift {
@@ -539,7 +555,6 @@ a {
         transform: translateX(0);
       }
     }
-
   }
 }
 
@@ -549,12 +564,18 @@ a {
   text-align: center;
   display: block;
   width: 100%;
-  margin-bottom: 20px;
 }
 
-p.host, .host a {
+p.host,
+.host a {
   font-size: 13px;
 }
 
+.hello {
+  text-align: center;
+  .title {
+    color: #333;
+  }
+}
 
 </style>
