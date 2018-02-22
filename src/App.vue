@@ -238,7 +238,7 @@ a {
   text-align: center;
   color: #5d6063;
   user-select: none;
-  margin-top: 100px;
+  margin-top: 60px;
 }
 
 #robot {
