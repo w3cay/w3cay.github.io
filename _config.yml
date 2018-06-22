@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 安望云海-用技术构建互联时代
-subtitle: 一只狂奔中的前端攻城狮
-description: 一名前端开发攻城狮，致力于研究web前端开发，小程序开发等技术
-keywords: 安望云海，前端开发，小程序开发
-author: Bright Chen
+title: "安望云海-用技术构建互联时代"
+subtitle: "一只狂奔中的前端攻城狮"
+description: "一名前端开发攻城狮，致力于研究web前端开发，小程序开发等技术"
+keywords: "安望云海，前端开发，小程序开发"
+author: "Bright Chen"
 language:
 timezone:
 menu_title: 安望云海
@@ -84,4 +84,4 @@ theme: clean-blog
 deploy:
   type: git
   repo:
-  coding: git@coding.com:w3cay/w3cay.coding.io.git,master
+    coding: git@git.coding.net:w3cay/w3cay.coding.me.git,master
