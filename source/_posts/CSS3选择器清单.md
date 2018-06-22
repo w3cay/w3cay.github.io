@@ -1,7 +1,7 @@
 ---
 title: CSS3选择器清单
 date: 2015-08-21 17:53:55
-tags: [CSS]
+tags: [CSS, 样式表]
 ---
 
 
