@@ -1,7 +1,8 @@
 ---
-layout: "post"
-title: "关于CSS选择器权重计算的疑惑"
-date: "2016-11-28 16:43"
+layout: post
+title: 关于CSS选择器权重计算的疑惑
+date: '2016-11-28 16:43'
+abbrlink: f5756f3d
 ---
 
 今天注意到这样一个问题❓

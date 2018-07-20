@@ -1,8 +1,12 @@
 ---
-layout: "post"
-title: " JavaScript 静态类型检查方案"
-date: "2017-06-10 20:50"
-tags: [JavaScript, Typescipt, Flow]
+layout: post
+title: ' JavaScript 静态类型检查方案'
+date: '2017-06-10 20:50'
+tags:
+  - JavaScript
+  - Typescipt
+  - Flow
+abbrlink: 5ccc5d5f
 ---
 
 TypeScipt 中的类型检查是 Javascipt 所缺少的，当考虑到项目的可靠性时，这个特性是必不可少的，目前的可实行方案有 TypeScipt 和 Flow 可供选择，下面和 ES6 做下比较和分析

@@ -15,7 +15,11 @@ menu_title: 安望云海
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: http://w3cay.com
 root: /
-permalink: :year/:month/:day/:title/
+permalink: post/:abbrlink.html
+abbrlink:
+  alg: crc32  # 算法：crc16(default) and crc32
+  rep: hex    # 进制：dec(default) and hex
+
 permalink_defaults:
 
 # Directory
@@ -75,6 +79,12 @@ pagination_dir: page
 plugins:
  hexo-generator-feed
  hexo-generator-sitemap
+
+nofollow:
+	enable: true
+
+sitemap:
+    path: sitemap.xml  
 
 ## Themes: https://hexo.io/themes/
 theme: clean-blog

@@ -1,7 +1,11 @@
 ---
 title: 基于Express+Vue+Webpack的聊天室项目搭建
+tags:
+  - Express
+  - Vue
+  - Webpack
+abbrlink: 96ac4750
 date: 2016-09-20 18:26:32
-tags: [Express,Vue,Webpack]
 ---
 
 最近突然想做一个聊天室项目，根据自己学习情况和项目特点，最终决定选择使用 Express、Vue 和 Webpack 来进行项目的搭建。顺便吐槽一下，现在想徒手搭一个前端项目真的比后端环境都难配置，下面记录我的搭建过程和踩坑之路。

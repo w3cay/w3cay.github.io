@@ -1,5 +1,6 @@
 ---
 title: APP技术选型之微信小程序
+abbrlink: 2be9b7d1
 date: 2018-07-01 23:24:29
 tags:
 ---

@@ -1,7 +1,10 @@
 ---
-title: Async/Await的优势与缺憾[译]
+title: 'Async/Await的优势与缺憾[译]'
+tags:
+  - Async
+  - Await
+abbrlink: 1ad0a893
 date: 2017-08-05 17:16:51
-tags: [Async,Await]
 ---
 这可能会存在一些争议，据我所知 async/await 这个特性受到很多开发者的青睐。对于不熟悉的同学，简单讲，其实它就是一种让开发者处理 Promise 更漂亮点儿的原生语法。
 

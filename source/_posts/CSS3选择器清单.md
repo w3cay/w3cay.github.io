@@ -1,7 +1,10 @@
 ---
 title: CSS3选择器清单
+tags:
+  - CSS
+  - 样式表
+abbrlink: 5ca7cbb8
 date: 2015-08-21 17:53:55
-tags: [CSS, 样式表]
 ---
 
 
