@@ -3,9 +3,9 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: "安望云海-用技术构建互联时代"
-subtitle: "一只狂奔中的前端攻城狮"
-description: "一名前端开发攻城狮，致力于研究web前端开发，小程序开发等技术"
+title: "安望云海"
+subtitle: "关注前端技术，努力做好产品"
+description: "关注前端技术，努力做好产品"
 keywords: "安望云海，前端开发，小程序开发"
 author: "Bright Chen"
 language:
@@ -37,6 +37,7 @@ new_post_name: :title.md # File name of new posts
 default_layout: post
 titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
+auto_spacing: true
 filename_case: 0
 render_drafts: false
 post_asset_folder: false

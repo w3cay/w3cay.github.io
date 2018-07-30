@@ -1,8 +1,8 @@
 ---
 title: React禁止页面滚动踩坑实践与方案梳理
 tags:
-  - javascript
-  - react
+  - Javascript
+  - React
 abbrlink: dc49b55
 date: 2018-07-02 23:09:08
 ---
