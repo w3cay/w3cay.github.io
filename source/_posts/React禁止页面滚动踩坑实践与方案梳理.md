@@ -8,12 +8,12 @@ date: 2018-07-02 23:09:08
 ---
 
 最近在使用 React 技术栈重构一个单页应用，其中有个页面是实现城市选择功能，主要是根据城市的首字母来快速跳转到相应位置，比较类似原生 APP 中的电话联系人查找功能，页面如图
-![功能界面](https://upload-images.jianshu.io/upload_images/2250902-8418da4d28a9107e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![功能界面](/images/scroll-issue/2250902-8418da4d28a9107e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ## 主要问题
 在上下滑动右侧 fixed 定位的元素时，页面会跟着一起滑动
 
-![滚动右侧整个页面跟着滚动](https://upload-images.jianshu.io/upload_images/2250902-c0ed1030d3fc5d08.gif?imageMogr2/auto-orient/strip)
+![滚动右侧整个页面跟着滚动](/images/scroll-issue/2250902-c0ed1030d3fc5d08.gif?imageMogr2/auto-orient/strip)
 
 当然这个现象在开发过程中应该会经常遇到，比如弹起 modal 框时，如果 modal框的内容高度小于框高度，滑动内容也会导致页面跟着滑动， 那么在 React 中像往常一样处理
 ```
@@ -32,7 +32,7 @@ sidebarTouchMove(e) {
 }
 ```
 但实际的反馈却事与愿违，在调试中，我发现 Chrome 是有警告的，并且没有达到想要的效果
-![chorme 开发工具警告提示](https://upload-images.jianshu.io/upload_images/2250902-74d74a702fbd05a7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![chorme 开发工具警告提示](/images/scroll-issue/2250902-74d74a702fbd05a7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 根据警告提示，找到的原因是
@@ -55,7 +55,7 @@ sidebarTouchMove(e) {
 https://developer.mozilla.org/zh-CN/docs/Web/CSS/touch-action
 
 加上了这个属性，感觉世界总算和平了，But！在 ios 系统上测试发现，这个属性 x 用没有，查了下 Can I Use
-![can i use 截图](https://upload-images.jianshu.io/upload_images/2250902-7ce4d43eec6721f7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![can i use 截图](/images/scroll-issue/2250902-7ce4d43eec6721f7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 确定无误，就是不支持，所以这个属性只在 Chrome 安卓等机型下是支持的，ios 这个就用不了，理想很丰满，显示很骨感。既然不兼容，那只能降级处理了，为了保证良好的功能体验，感觉是还要从 passive 上做处理，说到 passive 根据 [MDN文档：addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#Improving_scrolling_performance_with_passive_listeners) 的介绍，为了提高页面滚动性能，大多浏览器都默认把 touchstart 和 touchmove 在文档元素上直接注册的这个事件监听器属性设置成 passive：true ，而通过 AddEventListener 注册的事件依然没有变化
 
@@ -74,7 +74,7 @@ document.getElementById('nonius').addEventListener("touchmove", (e) => {
  加上这个方法后，this.sidebarTouchMove(e) 方法中的     e.preventDefault() 方法就可以正常使用了，而且没有警告提示，问题到此就算解决了
 ## 总结
 总结下，这里的坑主要是 chrome 和 safari 平台的标准不统一导致的，新的标准出台，其它宿主环境不能很好的支持，当然 react 官方对这个属性的支持也比较慢，同样的前端 UI 框架 Vue  就处理的很棒
-![vue对passive属性支持的相关语法](https://upload-images.jianshu.io/upload_images/2250902-12cacb6e99c0daf6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![vue对passive属性支持的相关语法](/images/scroll-issue/2250902-12cacb6e99c0daf6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 不小心暴露了，我是个 Vue粉，233
 ok，完 ~
 
