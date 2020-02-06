@@ -1,6 +1,6 @@
 ---
 title: Bright Chen
-subtitle: 关注前端技术，努力做好产品
+subtitle: 记录我的所做所想与成长
 type: product
 cover: /img/about/book-computer-design-326424.jpg
 ---
@@ -10,7 +10,9 @@ cover: /img/about/book-computer-design-326424.jpg
 
 由于爱好酷炫好玩的前端技术，并一直坚信 Web 即未来，大学时期就立志要踏入前端圈
 
-毕业一直混迹于魔都，先后在两家互联网公司任职，目前在携程担任高级前端开发工程师一职
+毕业后一直在上海工作，目前在携程担任高级前端开发工程师一职
+
+在此分享记录我的所做所想和自己成长的点滴，欢迎与我交流
 
 
 ##### 联系方式：（微信） ![我的微信](https://ftp.bmp.ovh/imgs/2019/11/6f097e5994c4a098.jpg) 
