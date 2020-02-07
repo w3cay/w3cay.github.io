@@ -14,10 +14,11 @@ cover: /img/about/book-computer-design-326424.jpg
 
 在此分享记录我的所做所想和自己成长的点滴，欢迎与我交流
 
+-------
 
-##### 联系方式：（微信） ![我的微信](https://ftp.bmp.ovh/imgs/2019/11/6f097e5994c4a098.jpg) 
-
-
+**联系方式：**
+- 邮箱：w3cay@foxmail.com
+- 微信：cay1192450117
 
 -------
 
