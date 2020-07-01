@@ -17,7 +17,7 @@ cover: /img/about/book-computer-design-326424.jpg
 -------
 
 **联系方式：**
-- 邮箱：w3cay@foxmail.com
+- 邮箱：w3cay@hotmail.com
 - 微信：cay1192450117
 
 -------
