@@ -15,7 +15,7 @@
     "eslint-config-airbnb": "^13.0.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-vue": "^1.0.0",
-    "node-sass": "^4.1.1",
+    "node-sass": "^4.13.1",
     "sass-loader": "^4.1.1",
     "vue": "^2.1.0"
   },
