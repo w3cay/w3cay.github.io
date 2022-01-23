@@ -95,4 +95,4 @@ theme: clean-blog
 deploy:
   type: git
   repo:
-    coding: git@e.coding.net:w3cay/w3cay.coding.me.git,master
+    coding: git@github.com:w3cay/w3cay.github.io.git,master
