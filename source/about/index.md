@@ -1,11 +1,13 @@
 ---
-title: Bright Chen
+title: 我的简历
 subtitle: 记录我的所做所想与成长
 type: product
 cover: /img/about/book-computer-design-326424.jpg
 ---
 
-我叫 **陈安阳**，英文名 **Bright Chen**，一枚还在前端技术版图中上下求索的小学生‍ 👨‍💻
+<img src="https://tva1.sinaimg.cn/large/008i3skNgy1gynp755ah3j30n00n0t9g.jpg" width="100" />
+
+我叫 **安阳**，英文名 **Bright Chen**，一枚还在前端技术版图中上下求索的小学生‍ 👨‍💻
 
 
 由于爱好酷炫好玩的前端技术，并一直坚信 Web 即未来，大学时期就立志要踏入前端圈

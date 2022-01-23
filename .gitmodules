@@ -1,0 +1,3 @@
+[submodule "themes/cayminima"]
+	path = themes/cayminima
+	url = git@github.com:w3cay/hexo-theme-minima.git

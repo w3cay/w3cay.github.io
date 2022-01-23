@@ -5,7 +5,7 @@ description: 读《见识》摘录与随想
 abbrlink: 65e1bca0
 date: 2020-02-07 00:05:45
 tags:
-  - 读书
+  - 读书笔记
   - 文摘
 cover: https://ftp.bmp.ovh/imgs/2019/11/07e3c50447dbf665.jpg
 ---
