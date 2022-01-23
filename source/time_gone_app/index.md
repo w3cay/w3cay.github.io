@@ -9,7 +9,7 @@ tags:
     - 倒数日
     - 纪念日
     - 小程序
-    - 作品
+    - APP
 
 cover: /img/product/time-minapp/dark-landscape-mountain.jpg
 photos: ['/img/product/time-minapp/IMG_6978.PNG','/img/product/time-minapp/IMG_6979.PNG','/img/product/time-minapp/IMG_6980.PNG','/img/product/time-minapp/qrcode.jpg']

@@ -3,7 +3,6 @@ title: React可配置中国城市列表选择组件
 tags:
   - React组件
   - react
-  - 作品
 abbrlink: f3a657ac
 date: 2018-08-05 16:22:12
 ---
