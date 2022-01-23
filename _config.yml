@@ -94,6 +94,5 @@ theme: clean-blog
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@47.100.162.133:/home/git/blog.git
-  branch: master                           
-  message:
+  repo:
+    coding: git@e.coding.net:w3cay/w3cay.coding.me.git,master
