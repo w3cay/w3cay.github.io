@@ -9,15 +9,10 @@ jobs:
 
     steps:
       - name: Checkout Blog Source
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
         with:
           ref: develop
-      - name: Checkout Theme
-        uses: actions/checkout@v1
-        with:
-          repository: w3cay/hexo-theme-minima
-          ref: master
-          path: themes/cayminima
+          submodules: 'true'
       - name: Use Node.js ${{ matrix.node_version }}
         uses: actions/setup-node@v1
         with:
