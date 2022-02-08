@@ -1,5 +1,5 @@
 ---
-title: 我的简历
+title: 我的简介
 subtitle: 记录我的所做所想与成长
 type: product
 cover: /img/about/book-computer-design-326424.jpg
