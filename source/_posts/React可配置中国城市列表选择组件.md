@@ -8,17 +8,21 @@ date: 2018-08-05 16:22:12
 ---
 
 
-# react-city-select
+
+### [react-city-select](https://github.com/w3cay/react-city-select)
+
 基于 React 的可配置化城市列表选择组件
 
-示例： https://chelun-h5.github.io/react-city-select/example/
+![](https://tva1.sinaimg.cn/large/008i3skNgy1gz8ur1zrpvj30hh0vbabp.jpg)
 
-使用：
+demo: https://w3cay.com/react-city-select/example/
 
-安装
+## 安装
 ```
 npm i react-city-select 或 yarn add react-city-select
 ```
+
+## 使用
 
 ```javascript
 ...
@@ -79,9 +83,8 @@ data | 必填；对象；| 城市组件数据JSON对象
 config | 可选；对象；| 配置或覆盖某个 key 下的值，详情见下表
 onSelectItem | 必填；函数；| 点击单元格数据回调
 
+
 ### config 参数
-
-
 
 属性 | 值 | 说明
 ---|---|---
@@ -137,4 +140,4 @@ sec-key : 对象key
 ]
 ...
 ```
- [Github主页传送门](https://github.com/chelun-h5/react-city-select)
+ Github 仓库地址： https://github.com/w3cay/react-city-select
