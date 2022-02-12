@@ -29,14 +29,14 @@ UI测试方面包括对页面样式的测试，比如在各种浏览器下的显
 
 ### 安装方法
 通过CDN方法引入
-```html
+``` html
 <script src="jquery.js"></script>
 <script src="https://cdn.ravenjs.com/3.8.0/raven.min.js" crossorigin="anonymous"></script>
 <script>Raven.config('你的DSN（在后台获取）').install();</script>
 <script src="app.js"></script>
 ```
 当然也可以通过 NPM 和 ES6 的语法引入
-```javascript
+``` javascript
 import Raven from 'raven-js';
 Raven
     .config('你的DSN（在后台获取）')
@@ -45,7 +45,7 @@ Raven
 
 ### 如何使用
 当你的 JavaScript 代码出现语法错误时，Sentry 会自动帮你上报代码错误。也可以自己将发送报错代码放在 try..catch 块中
-```javascript
+``` javascript
 try {
     doSomething(a[0])
 } catch(e) {
@@ -53,13 +53,13 @@ try {
 }
 ```
 也可以直接抛出错误或者是个打点信息
-```javascript
+``` javascript
 throw new Error('信息')  // 这样写比较好
 throw '信息'  // 不建议这样写
 ```
 
 同时 API 提供错误信息的配置，包括错误等级、注释 log 、 tag 、黑白名单等等，方便错误的追踪统计。
-```javascript
+``` javascript
 Raven.config('你的DSN（在后台获取）', {
     level: 'info' // 可以是 'info'、 'warning'、或者是 'error' 其中一个
     logger: 'my-logger', //log注释类型 
@@ -82,7 +82,7 @@ Raven.config('你的DSN（在后台获取）', {
 如果你的 JavaScript 代码是经过代码打包工具压缩的代码，比如 Webpack ，出现错误的时候，会出现提示错误在第一行好几百列的情况，导致代码追踪困难，代码压缩工具一般可以生成 SourceMap 文件，Sentry 默认会在当前 JavaScript 资源路径寻找 SourceMap 文件，如果能请求到，它会解析出源代码，方面追踪错误，但是这会有安全的隐患，就是其他人也能查看并调试你的代码。基于这个问题 Sentry 提供了 SourceMap 上传服务，将产生的 SourceMap 文件通过 API 或者 CLI 进行上传，既解决了错误代码追踪问题又解决了安全问题。
 
 在我们公司项目部署了 Sentry 后，发现一个不足之处，就是没有监测到资源加载错误，所以本人在项目页面中公共头部加入了监听 onerror 事件代码，当资源加载失败时发送错误 Log 给 Sentry ,通过对资源加载情况进行监视，能够及时发现和统计资源的问题。
-```javascript
+``` javascript
 // Record Resources load Errors
 window.addEventListener('error', e => {
   if (e.target.src && Pro) {

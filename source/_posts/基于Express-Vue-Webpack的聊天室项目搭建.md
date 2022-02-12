@@ -19,26 +19,26 @@ date: 2016-09-20 18:26:32
 
 安装Express生成器
 
-```
+``` bash
 $ npm install express-generator -g 
 ```
 
 生成示例项目并将示例项目和当前项目目录进行整合
 
-```
+``` bash
 $ express demo
 ```
 
 进入项目，安装依赖
 
-```
+``` bash
 $ cd Chatgroup
 $ npm install
 ```
 
 初次运行项目,通过 **localhost:3000** 来进行访问
 
-```
+``` bash
 $ DEBUG=Chatgroup:* npm start
 ```
 
@@ -46,7 +46,7 @@ $ DEBUG=Chatgroup:* npm start
 
 安装了nodemon之后，启动Express服务器的命令变为
 
-```
+``` bash
 $ DEBUG=ChatGroup:* cross-env NODE_ENV=dev nodemon -i src ./bin/www
 ```
 
@@ -54,7 +54,7 @@ $ DEBUG=ChatGroup:* cross-env NODE_ENV=dev nodemon -i src ./bin/www
 
 到此，服务端的环境配好了，接下来我开始配置前端的工作流 ，前端开发使用 Vue 框架，JavaScript 采用 es6 语法，Css 使用 scss 语法预编译，使用 webpack 处理语法编译，并且打包。为了解放F5,我在 webpack 中配置了 BrowserSync 插件，通过 **localhost:2333** 进行访问，每次前端代码的改动都会刷新浏览器，这里没有使用webpack的热更新，以后再加上，配置详情直接访问GitHub查看。
 
-```
+``` js
     plugins: [
         new webpack.optimize.OccurenceOrderPlugin(),
         // new webpack.HotModuleReplacementPlugin(),

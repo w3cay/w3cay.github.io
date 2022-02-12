@@ -9,7 +9,7 @@ date: 2017-08-05 17:16:51
 这可能会存在一些争议，据我所知 async/await 这个特性受到很多开发者的青睐。对于不熟悉的同学，简单讲，其实它就是一种让开发者处理 Promise 更漂亮点儿的原生语法。
 
 async/await 写法：
-```javascript
+``` javascript
 async function doSomethingCool() {
   let someValue = await getSomePromise();
   console.log(someValue + '!!!');
@@ -17,7 +17,7 @@ async function doSomethingCool() {
 ```
 
 Promise 写法：
-```javascript
+``` javascript
 function doSomethingCool() {
   getSomePromise.then(someValue => someValue + '!!!');
 }
@@ -32,7 +32,7 @@ function doSomethingCool() {
 1. 之前需要很多函数组成的功能，现在只需要一个函数。从视觉上就能感觉到复杂度降低了，之前需要 2n 个大括号的代码，现在只需要2个足以。无论如何，会让人感觉更简单些。
 2. 语法后面不用再加 `then` 链式回调函数。对于大多数人来说，Promise 和函数式编程有个巨大的转变就是链式回调函数。说实话，有些人很难处理这些回调。
 3. try/catch 使 async 语法的异常捕获更加好用。这可能是 async、await 带来我最喜欢的特性。使得 Promise 的异常错误处理像『常规 javascript』一样，例如：
-```javascript
+``` javascript
 let bad = () => Promise.reject('bad');
 async function coolWay() {
   try {
@@ -45,7 +45,7 @@ async function coolWay() {
 ```
 
 对比
-```javascript
+``` javascript
 let bad = () => Promise.reject('bad');
 function lameOldWay() {
   bad()

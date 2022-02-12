@@ -24,7 +24,7 @@ npm i react-city-select 或 yarn add react-city-select
 
 ## 使用
 
-```javascript
+``` javascript
 ...
 // 引入 CitySelect 组件
 import CitySelect from 'react-city-select';

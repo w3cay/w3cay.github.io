@@ -36,7 +36,7 @@ cover: /img/blur-fast-hurry-312848.jpg
 
 - **删除不必要的属性：** 像 `type="text/javascript"` or `type="text/css"` 这样的属性应该被移除。
 
-    ```html
+    ``` html
     <!-- Before HTML5 -->
     <script type="text/javascript">
         // Javascript code
@@ -68,7 +68,7 @@ cover: /img/blur-fast-hurry-312848.jpg
 - **最小化iframe的数量：**  仅在没有任何其他技术可行性时才使用iframe。尽量避免使用iframe。
 
 - **DNS预取：**  一次 DNS 查询时间大概在60-120ms之间或者更长，提前解析网页中可能的网络连接域名
-    ```html
+    ``` html
      <link rel="dns-prefetch" href="http://example.com/">
     ```
 ### CSS
@@ -86,7 +86,7 @@ cover: /img/blur-fast-hurry-312848.jpg
 
 -  **Concatenation:**  CSS文件合并（对于HTTP/2效果不是很大）。
 
-    ```html
+    ``` html
 
     <!-- 不推荐 -->
     <link rel="stylesheet" href="foo.css"/>
@@ -108,7 +108,7 @@ cover: /img/blur-fast-hurry-312848.jpg
 
 -  **非阻塞：**  CSS文件需要非阻塞引入，以防止DOM花费更多时间才能渲染完成。
 
-    ```html
+    ``` html
     <link rel="preload" href="global.min.css" as="style" onload="this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="global.min.css"></noscript>
     ```
@@ -163,7 +163,7 @@ cover: /img/blur-fast-hurry-312848.jpg
 
 *  **非阻塞JavaScript：**  使用defer属性或使用async来异步加载JavaScript文件。
 
-    ```html
+    ``` html
     <!-- Defer Attribute -->
     <script defer src="foo.js">
 

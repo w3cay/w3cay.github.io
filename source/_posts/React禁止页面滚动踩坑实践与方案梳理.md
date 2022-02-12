@@ -16,7 +16,7 @@ date: 2018-07-02 23:09:08
 ![滚动右侧整个页面跟着滚动](/images/scroll-issue/2250902-c0ed1030d3fc5d08.gif?imageMogr2/auto-orient/strip)
 
 当然这个现象在开发过程中应该会经常遇到，比如弹起 modal 框时，如果 modal框的内容高度小于框高度，滑动内容也会导致页面跟着滑动， 那么在 React 中像往常一样处理
-```
+``` html
 <div className="nonius"
   id="nonius"
   onTouchStart={this.sidebarTouchStart.bind(this)}
@@ -25,7 +25,7 @@ date: 2018-07-02 23:09:08
 >
 ```
 使用 React 提供的事件绑定机制，分别绑定三个 handler ，在  onTouchMove 事件中，我希望通过 preventDefault 能够阻止父级元素的滚动
-```
+``` js
 sidebarTouchMove(e) {
   e.preventDefault();
   ...
@@ -44,7 +44,7 @@ sidebarTouchMove(e) {
 
 根据 chrome 的提示得知，是因为 Chrome 现在默认把通过在 document 上绑定的事件监听器 passive 属性（后面细说）默认置为 true，这样就会导致我设置的  e.preventDefault() 被忽视了。当然 Chrome 的这个做法是有道理，是为了提高页面滚动的性能，那么为了防止带来的副作用，官方考虑的很周到，给我们提供了一个 CSS 属性专门用来解决这个问题
 
-```
+``` css
 #fixed-div {
   touch-action: none;
 }
@@ -62,7 +62,7 @@ https://developer.mozilla.org/zh-CN/docs/Web/CSS/touch-action
 既然现在默认将事件 passive 的属性默认设置为 true ,那我就显式设置为 false 好了，查遍 React 的文档，也没发现事件监听器可以支持配置这个属性的，在 github 上发现这个帖子 [Support Passive Event Listeners #6436 ](https://github.com/facebook/react/issues/6436) 目前看依然是 open 状态的，现在不确定有没有支持这个属性
 ## 解决方案
 既然这样，只能单独对 touchmove 通过 AddEventListener 方法去注册事件监听了
-```
+``` js
 // 为元素添加事件监听   
 document.getElementById('nonius').addEventListener("touchmove", (e) => {
   // 执行滚动回调

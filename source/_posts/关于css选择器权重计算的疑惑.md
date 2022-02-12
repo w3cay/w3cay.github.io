@@ -8,11 +8,11 @@ abbrlink: f5756f3d
 今天注意到这样一个问题❓
 > 下面代码背景色仍然是灰色，所以id权重为100，class权重为10，是不正确的吧？
 
-```html
+``` html
 <p id="testId" class="class1 class2 class3 class4 class5 class6 class7 class8 class9 class10 class11">
 </p>
 ```
-```css
+``` css
 #testId {
     background-color: grey;
 }
@@ -26,7 +26,7 @@ abbrlink: f5756f3d
 
 刚看到这个问题，自己也有点蒙，不是说 Id 选择器权重代表 100 ，class 为 10 吗，为什么还是灰色？当我试了一下才发现，确实是这样的。后来我把代码改成这样
 
-```html
+``` html
 <div class="class1">
   <div class="class2">
     <div class="class3">
@@ -53,7 +53,7 @@ abbrlink: f5756f3d
 
 ```
 
-```css
+``` css
 #testId {
     background-color: grey;
 }

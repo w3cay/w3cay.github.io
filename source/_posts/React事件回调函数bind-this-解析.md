@@ -9,16 +9,14 @@ tags:
 
 在使用 React 的过程中（ES6 Class 语法下），我一直很疑惑一件事情，那就是事件的绑定，比如 onClick、onChange 的事件处理函数必须这样写
 
-```
+``` html
 <button onClick={this.handleClick.bind(this)}>点击</button>
-
 ```
 
 或者在 constructor 函数中声明
 
-```
+``` js
 this.handleClick = this.handleClick.bind(this);
-
 ```
 
 
@@ -35,7 +33,7 @@ this 的作用就是找到函数被调用所绑定的位置，那么位置寻找
 
 一、 默认绑定
 默认绑定，顾名思义，就是无法应用其它规则的时候使用的绑定规则，这种规则也是函数中最常用的，叫做**独立函数调用**，例如：
-```
+``` js
 function foo() { 
   console.log( this.a );
 }
@@ -51,7 +49,7 @@ foo(); // 2
 
 二、 隐式绑定
 还有一种情况，函数存在于对象中，被对象所引用，例如
-```
+``` js
 function foo() { 
   console.log( this.a );
 }
@@ -64,7 +62,7 @@ obj.foo(); // 2
 ```
 这种情况 **this** 绑定的就是 obj， 因为函数存在于对象之中，并且被该对象所调用。
 即使 foo 函数存在于对象内部，但有时也会找不到它的上下文，比如
-```
+``` js
 function foo() { 
   console.log( this.a );
 }
@@ -81,7 +79,7 @@ bar(); // undefined
 
 还有一种情况，就是在回调函数中引用，也会出现找不到上下文，造成 this 绑定丢失
 
-```
+``` js
 function foo() { 
   console.log( this.a );
 }
@@ -102,7 +100,7 @@ setTimeout( obj.foo, 100 );
 三、 显式绑定
 显示绑定是通过 call(..) 和 apply(..) 方法，强制将 this 指向传入的对象，这种方式也叫做硬绑定
 
-```
+``` js
 function foo(something) {
     console.log(this.a, something);
     return this.a + something;
@@ -122,7 +120,7 @@ console.log( b ); // 5
 
 四、new 绑定
 new 通常是使用一个函数来构造一个对象，并且该函数中所指向的 this 会绑定在这个对象上，举个栗子 🌰
-```
+``` js
 function foo(a) {
     this.a = a;
 }
@@ -137,9 +135,8 @@ new 是最后一种可以影响函数调用时 this 绑定行为的方法，我�
 
 那么综上所述， React 这个情况就很好理解了
 
-```
+``` html
 <button onClick={this.handleClick.bind(this)}>点击</button>
-
 ```
 
 **this.handleClick 方法是通过回调函数传参执行的，而在 Class 语法中并没有默认做一个当前 this 绑定，所以会丢失 this 的绑定，在严格模式下，this 是 undefined**
@@ -156,9 +153,8 @@ React 文档对此问题描述：
 
 第一种，可以使用箭头函数，因为箭头函数是属于静态作用域的，所以 this 会直接绑定在当前作用域
 
-```
+``` js
  <button onClick={(e) => this.handleClick(e)}>
-
 ```
 
 第二种，使用 [public class fields](https://babeljs.io/docs/en/babel-plugin-transform-class-properties/) 语法，这样就不需要每次绑定 this，可以直接使用，当然这个规范还在实验阶段，需要通过 babel进行编译执行
