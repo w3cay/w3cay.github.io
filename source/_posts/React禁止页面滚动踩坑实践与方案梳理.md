@@ -42,7 +42,7 @@ sidebarTouchMove(e) {
 
 来源: https://www.chromestatus.com/features/5093566007214080
 
-根据 chrome 的提示得知，是因为 Chrome 现在默认把通过在 document 上绑定的事件监听器 passive 属性（后面细说）默认置为 true，这样就会导致我设置的  e.preventDefault() 被忽视了。当然 Chrome 的这个做法是有道理，是为了提高页面滚动的性能，那么为了防止带来的副作用，官方考虑的很周到，给我们提供了一个 CSS 属性专门用来解决这个问题
+根据 chrome 的提示得知，是因为 Chrome 现在默认把通过在 document 上绑定的事件监听器 passive 属性默认置为 true，这样就会导致我设置的  e.preventDefault() 被忽视了。当然 Chrome 的这个做法是有道理，是为了提高页面滚动的性能，那么为了防止带来的副作用，官方考虑的很周到，给我们提供了一个 CSS 属性专门用来解决这个问题
 
 ``` css
 #fixed-div {
@@ -57,9 +57,9 @@ https://developer.mozilla.org/zh-CN/docs/Web/CSS/touch-action
 加上了这个属性，感觉世界总算和平了，But！在 ios 系统上测试发现，这个属性 x 用没有，查了下 Can I Use
 ![can i use 截图](/images/scroll-issue/2250902-7ce4d43eec6721f7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-确定无误，就是不支持，所以这个属性只在 Chrome 安卓等机型下是支持的，ios 这个就用不了，理想很丰满，显示很骨感。既然不兼容，那只能降级处理了，为了保证良好的功能体验，感觉是还要从 passive 上做处理，说到 passive 根据 [MDN文档：addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#Improving_scrolling_performance_with_passive_listeners) 的介绍，为了提高页面滚动性能，大多浏览器都默认把 touchstart 和 touchmove 在文档元素上直接注册的这个事件监听器属性设置成 passive：true ，而通过 AddEventListener 注册的事件依然没有变化
+查询得知这个属性只在 Chrome 安卓等机型下是支持的，ios却用不了。既然不兼容，那只能降级处理了，为了保证良好的功能体验，感觉是还要从 passive 上做处理，说到 passive 根据 [MDN文档：addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#Improving_scrolling_performance_with_passive_listeners) 的介绍，为了提高页面滚动性能，大多浏览器都默认把 touchstart 和 touchmove 在文档元素上直接注册的这个事件监听器属性设置成 passive：true ，而通过 AddEventListener 注册的事件依然没有变化
 
-既然现在默认将事件 passive 的属性默认设置为 true ,那我就显式设置为 false 好了，查遍 React 的文档，也没发现事件监听器可以支持配置这个属性的，在 github 上发现这个帖子 [Support Passive Event Listeners #6436 ](https://github.com/facebook/react/issues/6436) 目前看依然是 open 状态的，现在不确定有没有支持这个属性
+既然现在默认将事件 passive 的属性默认设置为 true, 那我就显式设置为 false 好了，查遍 React 的文档，也没发现事件监听器可以支持配置这个属性的，在 github 上发现这个帖子 [Support Passive Event Listeners #6436 ](https://github.com/facebook/react/issues/6436) 目前看依然是 open 状态的，现在不确定有没有支持这个属性
 ## 解决方案
 既然这样，只能单独对 touchmove 通过 AddEventListener 方法去注册事件监听了
 ``` js
@@ -75,7 +75,6 @@ document.getElementById('nonius').addEventListener("touchmove", (e) => {
 ## 总结
 总结下，这里的坑主要是 chrome 和 safari 平台的标准不统一导致的，新的标准出台，其它宿主环境不能很好的支持，当然 react 官方对这个属性的支持也比较慢，同样的前端 UI 框架 Vue  就处理的很棒
 ![vue对passive属性支持的相关语法](/images/scroll-issue/2250902-12cacb6e99c0daf6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-不小心暴露了，我是个 Vue粉，233
-ok，完 ~
+
 
 
