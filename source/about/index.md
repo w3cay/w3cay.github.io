@@ -11,9 +11,9 @@ cover: /img/about/book-computer-design-326424.jpg
 
 主要技术栈： React、React Native、Vue、小程序等
 
-目前 Base 上海，在携程担任高级前端开发工程师一职
+目前 Base 上海，在 Trip.com 担任高级前端开发工程师一职
 
-理想是成为一名独立开发者，开发出能够被市场认可的产品
+理想是成为一名独立开发者，开发出能够被认可的产品
 
 在此分享记录我的所做所想和自己成长的点滴
 

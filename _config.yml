@@ -13,7 +13,7 @@ timezone:
 menu_title: 安望云海
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://w3cay.com
+url: https://w3cay.com
 root: /
 permalink: post/:abbrlink.html
 abbrlink:
@@ -82,7 +82,7 @@ nofollow:
 	enable: true
 
 sitemap:
-    path: sitemap.xml  
+    path: /sitemap.xml
 
 ## Themes: https://hexo.io/themes/
 theme: cayminima
