@@ -48,11 +48,11 @@ RSS 在工作的几年断断续续用了很长时间，但是最后基本都是�
 
 视频类的我也有订阅，主要是油管的一些频道，令人高兴的事是油管频道链接直接支持订阅，非常nice!
 
-现如今（2022年）已经有很多网站不提供RSS 订阅了，不过有个开源项目 [Rsshub](https://docs.rsshub.app/) 可以支持很多站点的抓取，并生成 feed 可以订阅，资源非常丰富并且一直在更新中
+现如今（2022年）已经有很多网站不提供RSS 订阅了，不过有个开源项目 [Rsshub](https://docs.rsshub.app/) 可以支持很多站点的抓取，并生成 feed 可以订阅，资源非常丰富并且一直在更新中**(2022年3月订阅源已被强，不过可以自己部署或者找镜像)**
 
 ![](https://tva1.sinaimg.cn/large/e6c9d24egy1gzisyq87sjj215w0ogtbj.jpg)
 
-还有个可以转微信公众号的 feed 聚合站点：[今天看点啥](http://www.jintiankansha.me/),  不过最多可以免费订阅三个源，更多需要买会员了
+还有可以转微信公众号的 feed 聚合站点：[今天看点啥](http://www.jintiankansha.me/)、[Werss](https://werss.app/),  不过都有免费订阅数量限制，更多需要买会员了
 
 
 ### 使用感受
