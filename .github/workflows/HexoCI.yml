@@ -34,3 +34,11 @@ jobs:
         run: |
           hexo clean
           hexo d -g
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: vhost276.cloudvhost.cn
+          username: webmaster@HA675619
+          password: ${{ secrets.FTP_PSW }}
+          local-dir: ./public/
+          server-dir: ./WEB_SYNC
