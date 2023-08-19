@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><meta name="generator" content="Hexo 3.9.0">
+
+  <!-- Minima -->
+  <!-- Hexo theme created by @adisaktijrs -->
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+
+  
+  <title>基于Express+Vue+Webpack的聊天室项目搭建 - 安望云海</title>
+  
+  <link rel="sitemap" href="https://w3cay.com/sitemap.xml">
+  
+  <link rel="canonical" href="https://w3cay.com/post/96ac4750.html">
+  
+  <meta name="description" content="最近突然想做一个聊天室项目，根据自己学习情况和项目特点，最终决定选择使用 Express、Vue 和 Webpack 来进行项目的搭建。顺便吐槽一下，现在想徒手搭一个前端项目真的比后端环境都难配置，下面记录我的搭建过程和踩坑之路。 首先贴上项目地址 https://github.com/w3cay/">
+  
+  
+  <meta name="keywords" content="安望云海，前端开发，小程序开发">
+  
+  <meta name="author" content="Bright Chen">
+  
+  <meta property="og:image" content="https://w3cay.comundefined">
+  
+  <meta property="og:site_name" content="安望云海">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="基于Express+Vue+Webpack的聊天室项目搭建 - 安望云海">
+  
+  <meta property="og:description" content="最近突然想做一个聊天室项目，根据自己学习情况和项目特点，最终决定选择使用 Express、Vue 和 Webpack 来进行项目的搭建。顺便吐槽一下，现在想徒手搭一个前端项目真的比后端环境都难配置，下面记录我的搭建过程和踩坑之路。 首先贴上项目地址 https://github.com/w3cay/">
+  
+  <meta property="og:url" content="https://w3cay.com/post/96ac4750.html">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="基于Express+Vue+Webpack的聊天室项目搭建 - 安望云海">
+  
+  <meta name="twitter:description" content="最近突然想做一个聊天室项目，根据自己学习情况和项目特点，最终决定选择使用 Express、Vue 和 Webpack 来进行项目的搭建。顺便吐槽一下，现在想徒手搭一个前端项目真的比后端环境都难配置，下面记录我的搭建过程和踩坑之路。 首先贴上项目地址 https://github.com/w3cay/">
+  
+  
+  <meta name="twitter:image" content="https://w3cay.comundefined">
+  
+  <meta name="twitter:url" content="https://w3cay.com/post/96ac4750.html">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="../css/normalize.css">
+  <link rel="stylesheet" href="../css/skeleton.css">
+  <link rel="stylesheet" href="../css/custom.css">
+  <!-- User css -->
+  
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="/images/favicon.ico">
+
+  <!-- Custom Theme Color Style
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <style>
+  a:not(.icon) {
+    text-decoration-color: #333;
+    background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 50%,
+      #333 50%
+    );
+  }
+  blockquote {
+    border-left: 8px solid #333;
+  }
+  .nanobar .bar {
+    background: #333;
+  }
+  .button.button-primary:hover,
+  button.button-primary:hover,
+  input[type="submit"].button-primary:hover,
+  input[type="reset"].button-primary:hover,
+  input[type="button"].button-primary:hover,
+  .button.button-primary:focus,
+  button.button-primary:focus,
+  input[type="submit"].button-primary:focus,
+  input[type="reset"].button-primary:focus,
+  input[type="button"].button-primary:focus {
+    background-color: #333;
+    border-color: #333;
+  }
+  input[type="email"]:focus,
+  input[type="number"]:focus,
+  input[type="search"]:focus,
+  input[type="text"]:focus,
+  input[type="tel"]:focus,
+  input[type="url"]:focus,
+  input[type="password"]:focus,
+  textarea:focus,
+  select:focus {
+    border: 1px solid #333;
+  }
+</style>
+
+  <!-- Google Analytics (With Privacy Settings On)
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?328fa5a80a196b37e6ca528f42086a81";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+  
+
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div>
+
+        <div class="row">
+  <div class="six columns">
+    <h1 class="mt-2 vertical-center">
+      <img class="home-avatar" src="/images/home-avatar.jpg">
+      安望云海
+    </h1>
+  </div>
+
+  <div class="twelve columns">
+    <div class="row">
+      <div class="nine columns left">
+        <a href="/">首页</a>
+        
+          
+          <a href="../product" class="ml">产品</a>
+          
+        
+          
+          <a href="../sentence" class="ml">想法</a>
+          
+        
+          
+          <a href="../about" class="ml">关于</a>
+          
+        
+        
+      </div>
+    </div>
+    <hr style="margin-bottom: 2.6rem">
+  </div>
+</div>
+
+        <div class="trans">
+            <h1 class="post-title">基于Express+Vue+Webpack的聊天室项目搭建</h1>
+  <p class="subtitle"> 发布于 2016-09-20</p>
+
+  <p class="post-content">
+    </p><p>最近突然想做一个聊天室项目，根据自己学习情况和项目特点，最终决定选择使用 Express、Vue 和 Webpack 来进行项目的搭建。顺便吐槽一下，现在想徒手搭一个前端项目真的比后端环境都难配置，下面记录我的搭建过程和踩坑之路。</p>
+<p>首先贴上项目地址 <a href="https://github.com/w3cay/ChatGroup" rel="external nofollow noopener noreferrer" target="_blank">https://github.com/w3cay/ChatGroup</a></p>
+<p>项目托管在Github上，除了添加一些说明文档和版权信息外，首先进 行 Git 的相关配置，在项目的根目录添加了 <strong>.gitgnore</strong> 文件，忽略一些不需要提交变化的文件，主要是 node 生产环境产生的一些文件。<br>接着，添加一下编辑器的配置，这个主要是为了防止不同编辑器之间的差异，如果是一个人进行开发还好，但是如果需要协作开发的话最好配置一下。在根目录我还添加了一个 <strong>.gitattributes</strong> 文件，主要是优化 <strong>git diff</strong>的体验，忽略编译文件的变化，不然满屏的压缩代码。具体配置请参考 <a href="http://www.jianshu.com/p/8ec1b32f2e13" rel="external nofollow noopener noreferrer" target="_blank">http://www.jianshu.com/p/8ec1b32f2e13</a> </p>
+<p>接下来，初始化node环境，使用 <strong>npm init</strong> 创建一个 <strong>package.json</strong> 文件，在这里进行node的包管理，然后开始安装部署 Express ,通过 Express 生成器生成项目的基本结构。</p>
+<p>安装Express生成器</p>
+<pre><code class="bash">$ npm install express-generator -g 
+</code></pre>
+<p>生成示例项目并将示例项目和当前项目目录进行整合</p>
+<pre><code class="bash">$ express demo
+</code></pre>
+<p>进入项目，安装依赖</p>
+<pre><code class="bash">$ cd Chatgroup
+$ npm install
+</code></pre>
+<p>初次运行项目,通过 <strong>localhost:3000</strong> 来进行访问</p>
+<pre><code class="bash">$ DEBUG=Chatgroup:* npm start
+</code></pre>
+<p>基本结构定好了，但是发现很不爽的事情，node服务每次修改代码，并不能生效，每次都需要进行重启服务器。所有后来又加上了 <a href="http://nodemon.io/" rel="external nofollow noopener noreferrer" target="_blank">nodemon</a> 这个插件，可以在每次修改服务端代码的时候，自动重启服务器，节省了时间，但是感觉体验还不是很好，启动服务器中间还是有间隙的，不能马上生效，所以感觉还是写PHP爽啊！</p>
+<p>安装了nodemon之后，启动Express服务器的命令变为</p>
+<pre><code class="bash">$ DEBUG=ChatGroup:* cross-env NODE_ENV=dev nodemon -i src ./bin/www
+</code></pre>
+<p>其中 <strong>cross-env</strong> 的作用是解决跨平台设置NODE_ENV的问题</p>
+<p>到此，服务端的环境配好了，接下来我开始配置前端的工作流 ，前端开发使用 Vue 框架，JavaScript 采用 es6 语法，Css 使用 scss 语法预编译，使用 webpack 处理语法编译，并且打包。为了解放F5,我在 webpack 中配置了 BrowserSync 插件，通过 <strong>localhost:2333</strong> 进行访问，每次前端代码的改动都会刷新浏览器，这里没有使用webpack的热更新，以后再加上，配置详情直接访问GitHub查看。</p>
+<pre><code class="js">    plugins: [
+        new webpack.optimize.OccurenceOrderPlugin(),
+        // new webpack.HotModuleReplacementPlugin(),
+        new webpack.NoErrorsPlugin(),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
+        }),
+        new ExtractTextPlugin(&#39;[name].css&#39;), 
+        new BrowserSyncPlugin({
+             // browse to http://localhost:3000/ during development,
+             // ./public directory is being served
+             host: &#39;localhost&#39;,
+             port: 2333,
+             proxy: &#39;http://localhost:3000/&#39;
+           },      // plugin options
+          {
+            // prevent BrowserSync from reloading the page
+            // and let Webpack Dev Server take care of this
+            reload: true
+          }
+       )
+    ]
+</code></pre>
+<p>到此，整个项目的前后端环境搭建的差不多了，数据库方面会采用 MongoDB,具体的配置这里就不赘述了，本篇文章不算是严谨的教程，项目并没有搭建的非常完美，此篇文章只是作为我的开发笔记，如有错误欢迎评论指出。☕️</p>
+
+  <p></p>
+
+  
+    <p class="post-tags">标签：<a class="classtest-link" href="../tags/Express/">Express</a>, <a class="classtest-link" href="../tags/Vue/">Vue</a>, <a class="classtest-link" href="../tags/Webpack/">Webpack</a></p>
+  
+
+    <hr>
+  <div id="vcomments" style="margin-top: 50px;"></div>
+  <script src="/js/Valine.min.js"></script>
+  <script>
+    new Valine({
+      el: '#vcomments',
+      appId: '2RPLQGvxicb06F127wr1yjsM-9Nh9j0Va',
+      appKey: 'GOiYet2qQ4iPWbC93HrgFmpc',
+      visitor: true,
+      placeholder: "发表下你的看法吧"
+    })
+  </script>
+
+  <link rel="stylesheet" href="/css/github.min.css">
+  <script src="/js/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+          <div class="row mt-2">
+  
+  <div class="eight columns">
+    <p id="madewith">
+      <a class="footer-link icon" href="https://hexo.io" target="_blank" style="text-decoration: none" rel="external nofollow noopener noreferrer" aria-label="Hexo.io">
+      </a>
+       ©
+      <a href="http://w3cay.com" target="_blank" rel="noreferrer">安望云海</a>
+      <a href="https://beian.miit.gov.cn" target="_blank" rel="external nofollow noopener noreferrer">豫ICP备2022016638号-1</a>
+    </p>
+    
+  </div>
+
+  <!-- Sepcial thanks to https://simpleicons.org/ for the icons -->
+  <div class="four columns mb-3 posisi">
+    
+    <a class="ml-0 footer-link icon" href="https://github.com/w3cay" target="_blank" style="text-decoration: none" rel="external nofollow noopener noreferrer" aria-label="GitHub">
+      <svg class="github svg-hov" width="18" height="18" role="img" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <title>GitHub</title>
+        <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+      </svg>
+    </a>
+     
+    <a class="ml-0 footer-link icon" href="https://w3cay.com/atom.xml" target="_blank" style="text-decoration: none" rel="noreferrer" aria-label="rss">
+      <svg t="1647683387613" class="icon svg-hov" viewbox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1287" width="16" height="16">
+        <path d="M832.512 63.488q26.624 0 49.664 10.24t40.448 27.648 27.648 40.448 10.24 49.664l0 704.512q0 26.624-10.24 49.664t-27.648 40.448-40.448 27.648-49.664 10.24l-704.512 0q-26.624 0-49.664-10.24t-40.448-27.648-27.648-40.448-10.24-49.664l0-704.512q0-26.624 10.24-49.664t27.648-40.448 40.448-27.648 49.664-10.24l704.512 0zM188.416 923.648q19.456 0 36.864-7.168t30.208-19.968 19.968-30.208 7.168-36.864-7.168-36.864-19.968-30.208-30.208-19.968-36.864-7.168q-20.48 0-37.376 7.168t-30.208 19.968-20.48 30.208-7.168 36.864 7.168 36.864 20.48 30.208 30.208 19.968 37.376 7.168zM446.464 897.024l36.864 0q15.36 0 30.208 0.512t31.232 0.512 36.864-1.024q0-93.184-35.84-175.616t-97.28-143.872-143.872-96.768-175.616-35.328q-1.024 24.576-1.024 39.936l0 28.672q0 14.336 0.512 29.184t0.512 37.376q65.536 0 123.392 24.576t100.864 67.584 68.096 100.864 25.088 123.392zM707.584 894.976q36.864 0 49.152 0.512t18.432 1.536 15.872 1.024 41.472-2.048q0-145.408-55.296-272.896t-150.528-222.72-223.232-150.528-273.408-55.296q-1.024 25.6-1.024 36.864l0 16.384q0 4.096 0.512 5.632t0.512 7.168 0.512 18.432 0.512 40.448q119.808 0 224.768 45.056t183.296 123.392 123.392 183.296 45.056 223.744z" p-id="1288" fill="#78aa50"/>
+      </svg>
+    </a>
+    
+  </div>
+  
+</div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <script src="/js/nanobar.min.js"></script>
+  
+  <script src="/js/pic.min.js"></script>
+  
+  <script>
+    var options = {
+      classname: 'nanobar',
+      id: 'myNanobar'
+    };
+    var nanobar = new Nanobar(options);
+    nanobar.go(30);
+    nanobar.go(76);
+    nanobar.go(100);
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><meta name="generator" content="Hexo 3.9.0">
+
+  <!-- Minima -->
+  <!-- Hexo theme created by @adisaktijrs -->
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+
+  
+  <title>Web前端测试和监控的探索和实践 - 安望云海</title>
+  
+  <link rel="sitemap" href="https://w3cay.com/sitemap.xml">
+  
+  <link rel="canonical" href="https://w3cay.com/post/8793df21.html">
+  
+  <meta name="description" content="引言每天早上到公司后，我都会先翻阅RSS上订阅的技术文章，前几天在看文章的时候突然注意到这样一句话  程序开发三板斧：功能、测试和监控。  看到这里我停了一下，仔细琢磨，发现这句话总结的非常到位和精辟。作为程序员，可能大部分人关注的只是功能需求的开发，但并不关心程序的测试和监控方面的问题，往往容易被">
+  
+  
+  <meta name="keywords" content="安望云海，前端开发，小程序开发">
+  
+  <meta name="author" content="Bright Chen">
+  
+  <meta property="og:image" content="https://w3cay.comundefined">
+  
+  <meta property="og:site_name" content="安望云海">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Web前端测试和监控的探索和实践 - 安望云海">
+  
+  <meta property="og:description" content="引言每天早上到公司后，我都会先翻阅RSS上订阅的技术文章，前几天在看文章的时候突然注意到这样一句话  程序开发三板斧：功能、测试和监控。  看到这里我停了一下，仔细琢磨，发现这句话总结的非常到位和精辟。作为程序员，可能大部分人关注的只是功能需求的开发，但并不关心程序的测试和监控方面的问题，往往容易被">
+  
+  <meta property="og:url" content="https://w3cay.com/post/8793df21.html">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Web前端测试和监控的探索和实践 - 安望云海">
+  
+  <meta name="twitter:description" content="引言每天早上到公司后，我都会先翻阅RSS上订阅的技术文章，前几天在看文章的时候突然注意到这样一句话  程序开发三板斧：功能、测试和监控。  看到这里我停了一下，仔细琢磨，发现这句话总结的非常到位和精辟。作为程序员，可能大部分人关注的只是功能需求的开发，但并不关心程序的测试和监控方面的问题，往往容易被">
+  
+  
+  <meta name="twitter:image" content="https://w3cay.comundefined">
+  
+  <meta name="twitter:url" content="https://w3cay.com/post/8793df21.html">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="../css/normalize.css">
+  <link rel="stylesheet" href="../css/skeleton.css">
+  <link rel="stylesheet" href="../css/custom.css">
+  <!-- User css -->
+  
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="/images/favicon.ico">
+
+  <!-- Custom Theme Color Style
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <style>
+  a:not(.icon) {
+    text-decoration-color: #333;
+    background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 50%,
+      #333 50%
+    );
+  }
+  blockquote {
+    border-left: 8px solid #333;
+  }
+  .nanobar .bar {
+    background: #333;
+  }
+  .button.button-primary:hover,
+  button.button-primary:hover,
+  input[type="submit"].button-primary:hover,
+  input[type="reset"].button-primary:hover,
+  input[type="button"].button-primary:hover,
+  .button.button-primary:focus,
+  button.button-primary:focus,
+  input[type="submit"].button-primary:focus,
+  input[type="reset"].button-primary:focus,
+  input[type="button"].button-primary:focus {
+    background-color: #333;
+    border-color: #333;
+  }
+  input[type="email"]:focus,
+  input[type="number"]:focus,
+  input[type="search"]:focus,
+  input[type="text"]:focus,
+  input[type="tel"]:focus,
+  input[type="url"]:focus,
+  input[type="password"]:focus,
+  textarea:focus,
+  select:focus {
+    border: 1px solid #333;
+  }
+</style>
+
+  <!-- Google Analytics (With Privacy Settings On)
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?328fa5a80a196b37e6ca528f42086a81";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+  
+
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div>
+
+        <div class="row">
+  <div class="six columns">
+    <h1 class="mt-2 vertical-center">
+      <img class="home-avatar" src="/images/home-avatar.jpg">
+      安望云海
+    </h1>
+  </div>
+
+  <div class="twelve columns">
+    <div class="row">
+      <div class="nine columns left">
+        <a href="/">首页</a>
+        
+          
+          <a href="../product" class="ml">产品</a>
+          
+        
+          
+          <a href="../sentence" class="ml">想法</a>
+          
+        
+          
+          <a href="../about" class="ml">关于</a>
+          
+        
+        
+      </div>
+    </div>
+    <hr style="margin-bottom: 2.6rem">
+  </div>
+</div>
+
+        <div class="trans">
+            <h1 class="post-title">Web前端测试和监控的探索和实践</h1>
+  <p class="subtitle"> 发布于 2016-11-08</p>
+
+  <p class="post-content">
+    </p><h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>每天早上到公司后，我都会先翻阅RSS上订阅的技术文章，前几天在看文章的时候突然注意到这样一句话</p>
+<blockquote>
+<p>程序开发三板斧：功能、测试和监控。</p>
+</blockquote>
+<p>看到这里我停了一下，仔细琢磨，发现这句话总结的非常到位和精辟。作为程序员，可能大部分人关注的只是功能需求的开发，但并不关心程序的测试和监控方面的问题，往往容易被忽略的问题有时候却非常的重要。看完文章后我就开始着手研究前端测试和监控方面的东西。以下是我的调研总结：</p>
+<h2 id="前端测试"><a href="#前端测试" class="headerlink" title="前端测试"></a>前端测试</h2><p>我所理解的前端测试主要分为单元测试、UI测试、性能测试。</p>
+<p>单元测试主要是对方法和类库的测试，单元测试最长用的两个库是  <a href="https://mochajs.org/" rel="external nofollow noopener noreferrer" target="_blank">Mocha</a> 和 <a href="https://jasmine.github.io/" rel="external nofollow noopener noreferrer" target="_blank">Jasmine</a>,通过写测试脚本来对小模块的代码进行测试，具体教程请参考 <a href="http://www.ruanyifeng.com/blog/2015/12/a-mocha-tutorial-of-examples.html" rel="external nofollow noopener noreferrer" target="_blank">测试框架 Mocha 实例教程 —— 阮一峰</a>。单元测试存在个弊端，就是你需要去写大量的脚本去跑测试用例，而且如果需求变动，你的代码逻辑就会变动，所以你的测试脚本也要做相应的维护。如果是在大公司，人力充足有专门测试人员的情况下，以上的问题应该不是问题，但是像大多数人所处的小公司，业务有时候可能都开发不完，更没时间维护测试脚本了。所以做单元测试需要消耗一定精力，量力而行。</p>
+<p>UI测试方面包括对页面样式的测试，比如在各种浏览器下的显示效果有没有出现异常等等，还包括对交互的测试，比如点击按钮是否会有相应的反馈等等。性能测试主要是对网页加载速度的检测，包括不同网络环境不同设备的情况下加载情况的的测试，以上两个方面的测试推荐大名鼎鼎的测试工具 <a href="http://phantomjs.org/" rel="external nofollow noopener noreferrer" target="_blank">Phantomjs</a> 这个工具是一个无头浏览器，对于web测试、界面、网络捕获、页面自动化访问等等方面都很强大。基于 Phantomjs 还有相关的 <a href="https://github.com/Huddle/PhantomCSS" rel="external nofollow noopener noreferrer" target="_blank">PhantomCSS</a> 帮助做像素的比对测试，和 <a href="https://github.com/Huddle/PhantomFlow" rel="external nofollow noopener noreferrer" target="_blank">PhantomFlow</a> 来进行操作对比测试。由于没有太多实践，这里略过。</p>
+<p>前端测试方面有的公司会有专门的部门进行测试，但是像我所处的创业公司很少会有专门的测试人员，在测试方面本人的实践经验较少，主要还是在开发中不断的进行人工测试来保证产品质量。但是有时候开发人员的人工测试并不能把所有的 BUG 都抓出来，即使用户发现了 BUG ,又有多少愿意提出 BUG 的呢？所以一个稳定的系统，监控这个环节是非常重要的。</p>
+<h1 id="前端监控"><a href="#前端监控" class="headerlink" title="前端监控"></a>前端监控</h1><p>监控在提高产品稳定和质量方面有很重要的作用。关于前端监控的重要性，可以先看看这篇文章 <a href="https://zhuanlan.zhihu.com/p/23310438" rel="external nofollow noopener noreferrer" target="_blank">不可忽视的前端监控 —— 张鑫</a></p>
+<p>在前端监控方面，本人在公司的项目上实验性的部署了 <a href="https://github.com/getsentry/sentry" rel="external nofollow noopener noreferrer" target="_blank">Sentry</a> ，这是一个跨平台的错误日志收集系统，不只是Web前端可以使用，其他开发也能使用。引入项目后能够监听到 Web 页面上的 JavaScript 错误，通过邮件及时的通知开发人员进行 Bug 追踪。这个项目是开源项目，可以自己搭建公司的日志管理系统，也可以使用 Sentry 的服务。</p>
+<h3 id="安装方法"><a href="#安装方法" class="headerlink" title="安装方法"></a>安装方法</h3><p>通过CDN方法引入</p>
+<pre><code class="html">&lt;script src=&quot;jquery.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://cdn.ravenjs.com/3.8.0/raven.min.js&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;
+&lt;script&gt;Raven.config(&#39;你的DSN（在后台获取）&#39;).install();&lt;/script&gt;
+&lt;script src=&quot;app.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<p>当然也可以通过 NPM 和 ES6 的语法引入</p>
+<pre><code class="javascript">import Raven from &#39;raven-js&#39;;
+Raven
+    .config(&#39;你的DSN（在后台获取）&#39;)
+    .install();
+</code></pre>
+<h3 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h3><p>当你的 JavaScript 代码出现语法错误时，Sentry 会自动帮你上报代码错误。也可以自己将发送报错代码放在 try..catch 块中</p>
+<pre><code class="javascript">try {
+    doSomething(a[0])
+} catch(e) {
+    Raven.captureException(e)
+}
+</code></pre>
+<p>也可以直接抛出错误或者是个打点信息</p>
+<pre><code class="javascript">throw new Error(&#39;信息&#39;)  // 这样写比较好
+throw &#39;信息&#39;  // 不建议这样写
+</code></pre>
+<p>同时 API 提供错误信息的配置，包括错误等级、注释 log 、 tag 、黑白名单等等，方便错误的追踪统计。</p>
+<pre><code class="javascript">Raven.config(&#39;你的DSN（在后台获取）&#39;, {
+    level: &#39;info&#39; // 可以是 &#39;info&#39;、 &#39;warning&#39;、或者是 &#39;error&#39; 其中一个
+    logger: &#39;my-logger&#39;, //log注释类型 
+    environment: &#39;production&#39;, //产品环境
+    release: &#39;721e41770371db95eee98ca2707686226b993eda&#39;, // 当前代码版本
+    whitelistUrls: [ 
+        /disqus\.com/,
+        /getsentry\.com/
+    ], 
+    ignoreErrors: [
+        &#39;fb_xd_fragment&#39;,
+        /ReferenceError:.*/
+    ],
+    includePaths: [
+        /https?:\/\/(www\.)?getsentry\.com/
+    ]
+}).install();
+</code></pre>
+<p>如果你的 JavaScript 代码是经过代码打包工具压缩的代码，比如 Webpack ，出现错误的时候，会出现提示错误在第一行好几百列的情况，导致代码追踪困难，代码压缩工具一般可以生成 SourceMap 文件，Sentry 默认会在当前 JavaScript 资源路径寻找 SourceMap 文件，如果能请求到，它会解析出源代码，方面追踪错误，但是这会有安全的隐患，就是其他人也能查看并调试你的代码。基于这个问题 Sentry 提供了 SourceMap 上传服务，将产生的 SourceMap 文件通过 API 或者 CLI 进行上传，既解决了错误代码追踪问题又解决了安全问题。</p>
+<p>在我们公司项目部署了 Sentry 后，发现一个不足之处，就是没有监测到资源加载错误，所以本人在项目页面中公共头部加入了监听 onerror 事件代码，当资源加载失败时发送错误 Log 给 Sentry ,通过对资源加载情况进行监视，能够及时发现和统计资源的问题。</p>
+<pre><code class="javascript">// Record Resources load Errors
+window.addEventListener(&#39;error&#39;, e =&gt; {
+  if (e.target.src &amp;&amp; Pro) {
+    Log(`src load error at ${e.target.src}`, {
+      logger: &#39;Resources&#39;,
+    });
+  }
+}, true);
+</code></pre>
+<p>以上只是调研实践的一点总结，后续会着重研究一下前端自动化测试方面的东西，虽然这个坑很深。</p>
+<p>延伸阅读：</p>
+<p><a href="http://taobaofed.org/blog/2015/12/10/frontend-test-platform/" rel="external nofollow noopener noreferrer" target="_blank">http://taobaofed.org/blog/2015/12/10/frontend-test-platform/</a></p>
+<p><a href="http://fex.baidu.com/blog/2015/07/front-end-test/" rel="external nofollow noopener noreferrer" target="_blank">http://fex.baidu.com/blog/2015/07/front-end-test/</a></p>
+<p><a href="http://www.alloyteam.com/2014/03/front-end-data-monitoring/" rel="external nofollow noopener noreferrer" target="_blank">http://www.alloyteam.com/2014/03/front-end-data-monitoring/</a></p>
+<p><a href="http://fex.baidu.com/blog/2014/05/build-performance-monitor-in-7-days/" rel="external nofollow noopener noreferrer" target="_blank">http://fex.baidu.com/blog/2014/05/build-performance-monitor-in-7-days/</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/23310438" rel="external nofollow noopener noreferrer" target="_blank">https://zhuanlan.zhihu.com/p/23310438</a></p>
+<p><a href="https://www.zhihu.com/question/29953354/answer/128837124" rel="external nofollow noopener noreferrer" target="_blank">https://www.zhihu.com/question/29953354/answer/128837124</a></p>
+
+  <p></p>
+
+  
+    <p class="post-tags">标签：<a class="classtest-link" href="../tags/前端测试/">前端测试</a>, <a class="classtest-link" href="../tags/前端监控/">前端监控</a></p>
+  
+
+    <hr>
+  <div id="vcomments" style="margin-top: 50px;"></div>
+  <script src="/js/Valine.min.js"></script>
+  <script>
+    new Valine({
+      el: '#vcomments',
+      appId: '2RPLQGvxicb06F127wr1yjsM-9Nh9j0Va',
+      appKey: 'GOiYet2qQ4iPWbC93HrgFmpc',
+      visitor: true,
+      placeholder: "发表下你的看法吧"
+    })
+  </script>
+
+  <link rel="stylesheet" href="/css/github.min.css">
+  <script src="/js/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+          <div class="row mt-2">
+  
+  <div class="eight columns">
+    <p id="madewith">
+      <a class="footer-link icon" href="https://hexo.io" target="_blank" style="text-decoration: none" rel="external nofollow noopener noreferrer" aria-label="Hexo.io">
+      </a>
+       ©
+      <a href="http://w3cay.com" target="_blank" rel="noreferrer">安望云海</a>
+      <a href="https://beian.miit.gov.cn" target="_blank" rel="external nofollow noopener noreferrer">豫ICP备2022016638号-1</a>
+    </p>
+    
+  </div>
+
+  <!-- Sepcial thanks to https://simpleicons.org/ for the icons -->
+  <div class="four columns mb-3 posisi">
+    
+    <a class="ml-0 footer-link icon" href="https://github.com/w3cay" target="_blank" style="text-decoration: none" rel="external nofollow noopener noreferrer" aria-label="GitHub">
+      <svg class="github svg-hov" width="18" height="18" role="img" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <title>GitHub</title>
+        <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+      </svg>
+    </a>
+     
+    <a class="ml-0 footer-link icon" href="https://w3cay.com/atom.xml" target="_blank" style="text-decoration: none" rel="noreferrer" aria-label="rss">
+      <svg t="1647683387613" class="icon svg-hov" viewbox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1287" width="16" height="16">
+        <path d="M832.512 63.488q26.624 0 49.664 10.24t40.448 27.648 27.648 40.448 10.24 49.664l0 704.512q0 26.624-10.24 49.664t-27.648 40.448-40.448 27.648-49.664 10.24l-704.512 0q-26.624 0-49.664-10.24t-40.448-27.648-27.648-40.448-10.24-49.664l0-704.512q0-26.624 10.24-49.664t27.648-40.448 40.448-27.648 49.664-10.24l704.512 0zM188.416 923.648q19.456 0 36.864-7.168t30.208-19.968 19.968-30.208 7.168-36.864-7.168-36.864-19.968-30.208-30.208-19.968-36.864-7.168q-20.48 0-37.376 7.168t-30.208 19.968-20.48 30.208-7.168 36.864 7.168 36.864 20.48 30.208 30.208 19.968 37.376 7.168zM446.464 897.024l36.864 0q15.36 0 30.208 0.512t31.232 0.512 36.864-1.024q0-93.184-35.84-175.616t-97.28-143.872-143.872-96.768-175.616-35.328q-1.024 24.576-1.024 39.936l0 28.672q0 14.336 0.512 29.184t0.512 37.376q65.536 0 123.392 24.576t100.864 67.584 68.096 100.864 25.088 123.392zM707.584 894.976q36.864 0 49.152 0.512t18.432 1.536 15.872 1.024 41.472-2.048q0-145.408-55.296-272.896t-150.528-222.72-223.232-150.528-273.408-55.296q-1.024 25.6-1.024 36.864l0 16.384q0 4.096 0.512 5.632t0.512 7.168 0.512 18.432 0.512 40.448q119.808 0 224.768 45.056t183.296 123.392 123.392 183.296 45.056 223.744z" p-id="1288" fill="#78aa50"/>
+      </svg>
+    </a>
+    
+  </div>
+  
+</div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <script src="/js/nanobar.min.js"></script>
+  
+  <script src="/js/pic.min.js"></script>
+  
+  <script>
+    var options = {
+      classname: 'nanobar',
+      id: 'myNanobar'
+    };
+    var nanobar = new Nanobar(options);
+    nanobar.go(30);
+    nanobar.go(76);
+    nanobar.go(100);
+  </script>
+
+</body>
+
+</html>

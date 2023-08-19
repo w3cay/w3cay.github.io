@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><meta name="generator" content="Hexo 3.9.0">
+
+  <!-- Minima -->
+  <!-- Hexo theme created by @adisaktijrs -->
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+
+  
+  <title>React事件回调函数bind(this)解析 - 安望云海</title>
+  
+  <link rel="sitemap" href="https://w3cay.com/sitemap.xml">
+  
+  <link rel="canonical" href="https://w3cay.com/post/574dfb59.html">
+  
+  <meta name="description" content="在使用 React 的过程中（ES6 Class 语法下），我一直很疑惑一件事情，那就是事件的绑定，比如 onClick、onChange 的事件处理函数必须这样写 &amp;lt;button onClick={this.handleClick.bind(this)}&amp;gt;点击&amp;lt;/button&amp;g">
+  
+  
+  <meta name="keywords" content="安望云海，前端开发，小程序开发">
+  
+  <meta name="author" content="Bright Chen">
+  
+  <meta property="og:image" content="https://w3cay.comundefined">
+  
+  <meta property="og:site_name" content="安望云海">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="React事件回调函数bind(this)解析 - 安望云海">
+  
+  <meta property="og:description" content="在使用 React 的过程中（ES6 Class 语法下），我一直很疑惑一件事情，那就是事件的绑定，比如 onClick、onChange 的事件处理函数必须这样写 &amp;lt;button onClick={this.handleClick.bind(this)}&amp;gt;点击&amp;lt;/button&amp;g">
+  
+  <meta property="og:url" content="https://w3cay.com/post/574dfb59.html">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="React事件回调函数bind(this)解析 - 安望云海">
+  
+  <meta name="twitter:description" content="在使用 React 的过程中（ES6 Class 语法下），我一直很疑惑一件事情，那就是事件的绑定，比如 onClick、onChange 的事件处理函数必须这样写 &amp;lt;button onClick={this.handleClick.bind(this)}&amp;gt;点击&amp;lt;/button&amp;g">
+  
+  
+  <meta name="twitter:image" content="https://w3cay.comundefined">
+  
+  <meta name="twitter:url" content="https://w3cay.com/post/574dfb59.html">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="../css/normalize.css">
+  <link rel="stylesheet" href="../css/skeleton.css">
+  <link rel="stylesheet" href="../css/custom.css">
+  <!-- User css -->
+  
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="/images/favicon.ico">
+
+  <!-- Custom Theme Color Style
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <style>
+  a:not(.icon) {
+    text-decoration-color: #333;
+    background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 50%,
+      #333 50%
+    );
+  }
+  blockquote {
+    border-left: 8px solid #333;
+  }
+  .nanobar .bar {
+    background: #333;
+  }
+  .button.button-primary:hover,
+  button.button-primary:hover,
+  input[type="submit"].button-primary:hover,
+  input[type="reset"].button-primary:hover,
+  input[type="button"].button-primary:hover,
+  .button.button-primary:focus,
+  button.button-primary:focus,
+  input[type="submit"].button-primary:focus,
+  input[type="reset"].button-primary:focus,
+  input[type="button"].button-primary:focus {
+    background-color: #333;
+    border-color: #333;
+  }
+  input[type="email"]:focus,
+  input[type="number"]:focus,
+  input[type="search"]:focus,
+  input[type="text"]:focus,
+  input[type="tel"]:focus,
+  input[type="url"]:focus,
+  input[type="password"]:focus,
+  textarea:focus,
+  select:focus {
+    border: 1px solid #333;
+  }
+</style>
+
+  <!-- Google Analytics (With Privacy Settings On)
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?328fa5a80a196b37e6ca528f42086a81";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+  
+
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div>
+
+        <div class="row">
+  <div class="six columns">
+    <h1 class="mt-2 vertical-center">
+      <img class="home-avatar" src="/images/home-avatar.jpg">
+      安望云海
+    </h1>
+  </div>
+
+  <div class="twelve columns">
+    <div class="row">
+      <div class="nine columns left">
+        <a href="/">首页</a>
+        
+          
+          <a href="../product" class="ml">产品</a>
+          
+        
+          
+          <a href="../sentence" class="ml">想法</a>
+          
+        
+          
+          <a href="../about" class="ml">关于</a>
+          
+        
+        
+      </div>
+    </div>
+    <hr style="margin-bottom: 2.6rem">
+  </div>
+</div>
+
+        <div class="trans">
+            <h1 class="post-title">React事件回调函数bind(this)解析</h1>
+  <p class="subtitle"> 发布于 2018-07-27</p>
+
+  <p class="post-content">
+    </p><p>在使用 React 的过程中（ES6 Class 语法下），我一直很疑惑一件事情，那就是事件的绑定，比如 onClick、onChange 的事件处理函数必须这样写</p>
+<pre><code class="html">&lt;button onClick={this.handleClick.bind(this)}&gt;点击&lt;/button&gt;
+</code></pre>
+<p>或者在 constructor 函数中声明</p>
+<pre><code class="js">this.handleClick = this.handleClick.bind(this);
+</code></pre>
+<h3 id="疑惑"><a href="#疑惑" class="headerlink" title="疑惑"></a>疑惑</h3><p>为什么明明是使用的是 <strong>this</strong> 下面的函数，还要绑定 <strong>bind</strong> 一下 this 呢? 就好比『我想用自己的手机还要声明下这是我的手机』，不说写法是否正确，自我感觉代码的可读性和美观度都不佳</p>
+<h3 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h3><p>Javascript 是一种比较特殊的语言，说起这个问题要从作用域谈起，首先，JavaScript 是只有静态作用域的，没有动态作用域，或许有人说 this 不是吗？NO，它只是像而已</p>
+<p>顾名思义，静态作用域就是说作用域由你的代码书写位置决定的，而动态作用域的作用域是调用执行的时候确定的，没错 this 就是这样的</p>
+<p>this 的作用就是找到函数被调用所绑定的位置，那么位置寻找是有规则的，下面是四条寻找规则</p>
+<p>一、 默认绑定<br>默认绑定，顾名思义，就是无法应用其它规则的时候使用的绑定规则，这种规则也是函数中最常用的，叫做<strong>独立函数调用</strong>，例如：</p>
+<pre><code class="js">function foo() { 
+  console.log( this.a );
+}
+
+var a = 2; 
+
+foo(); // 2
+</code></pre>
+<p><strong>foo</strong> 不带任何修饰的函数引用进行调用，只能使用默认绑定规则<br>这时，<strong>this</strong> 的指向默认是全局作用域，即 <strong>window</strong> ,当然是在非严格模式下。在严格模式下就会是 <strong>undefined</strong></p>
+<p>二、 隐式绑定<br>还有一种情况，函数存在于对象中，被对象所引用，例如</p>
+<pre><code class="js">function foo() { 
+  console.log( this.a );
+}
+var obj = { 
+  a: 2,
+  foo: foo 
+};
+
+obj.foo(); // 2
+</code></pre>
+<p>这种情况 <strong>this</strong> 绑定的就是 obj， 因为函数存在于对象之中，并且被该对象所调用。<br>即使 foo 函数存在于对象内部，但有时也会找不到它的上下文，比如</p>
+<pre><code class="js">function foo() { 
+  console.log( this.a );
+}
+var obj = { 
+  a: 2,
+  foo: foo 
+};
+//将 foo 函数赋值给一个变量
+var bar = obj.foo; 
+
+bar(); // undefined
+</code></pre>
+<p>此时，函数 bar 是对 obj.foo 的一个引用，严格来说，跟对象 obj 没有任何关系，此时 bar 的执行就可以运用默认绑定规则，所以它的上下文this 指向 window 或者 undefined</p>
+<p>还有一种情况，就是在回调函数中引用，也会出现找不到上下文，造成 this 绑定丢失</p>
+<pre><code class="js">function foo() { 
+  console.log( this.a );
+}
+
+var a = &#39;window a&#39;;
+
+var obj = { 
+  a: &#39;obj a&#39;,
+  foo: foo 
+};
+
+// obj.foo 通过参数传递给 setTimeout 
+setTimeout( obj.foo, 100 ); 
+
+</code></pre>
+<p>此时 this 绑定丢失, 就会应用默认绑定，找到 window</p>
+<p>三、 显式绑定<br>显示绑定是通过 call(..) 和 apply(..) 方法，强制将 this 指向传入的对象，这种方式也叫做硬绑定</p>
+<pre><code class="js">function foo(something) {
+    console.log(this.a, something);
+    return this.a + something;
+}
+var obj = {
+    a: 2
+};
+var bar = function() {
+    return foo.apply(obj, arguments);
+};
+var b = bar(3);
+
+console.log( b ); // 5
+
+</code></pre>
+<p>四、new 绑定<br>new 通常是使用一个函数来构造一个对象，并且该函数中所指向的 this 会绑定在这个对象上，举个栗子 🌰</p>
+<pre><code class="js">function foo(a) {
+    this.a = a;
+}
+var bar = new foo(2);
+console.log(bar.a); // 2
+</code></pre>
+<p>使用 new 来调用 foo(..) 时，我们会构造一个新对象 bar 并把它绑定到 foo(..) 调用中的 this 上</p>
+<p>new 是最后一种可以影响函数调用时 this 绑定行为的方法，我们称之为 new 绑定</p>
+<p>那么综上所述， React 这个情况就很好理解了</p>
+<pre><code class="html">&lt;button onClick={this.handleClick.bind(this)}&gt;点击&lt;/button&gt;
+</code></pre>
+<p><strong>this.handleClick 方法是通过回调函数传参执行的，而在 Class 语法中并没有默认做一个当前 this 绑定，所以会丢失 this 的绑定，在严格模式下，this 是 undefined</strong></p>
+<p>Function.prototype.bind() 是函数自带的绑定上下文方法， 与 call(..) 和 apply(..) 功能相似，bind(this) 之后会创建一个新的函数，并且 this 绑定在当前想要的地方</p>
+<p>React 文档对此问题描述：</p>
+<p><strong>You have to be careful about the meaning of this in JSX callbacks. In JavaScript, class methods are not bound by default. If you forget to bind this.handleClick and pass it to onClick, this will be undefined when the function is actually called.</strong></p>
+<h3 id="替代"><a href="#替代" class="headerlink" title="替代"></a>替代</h3><p>当然，this.handleClick.bind(this) 这种写法是有其它替代写法的，主要有两种</p>
+<p>第一种，可以使用箭头函数，因为箭头函数是属于静态作用域的，所以 this 会直接绑定在当前作用域</p>
+<pre><code class="js"> &lt;button onClick={(e) =&gt; this.handleClick(e)}&gt;
+</code></pre>
+<p>第二种，使用 <a href="https://babeljs.io/docs/en/babel-plugin-transform-class-properties/" rel="external nofollow noopener noreferrer" target="_blank">public class fields</a> 语法，这样就不需要每次绑定 this，可以直接使用，当然这个规范还在实验阶段，需要通过 babel进行编译执行</p>
+
+  <p></p>
+
+  
+    <p class="post-tags">标签：<a class="classtest-link" href="../tags/Javascript/">Javascript</a>, <a class="classtest-link" href="../tags/React/">React</a></p>
+  
+
+    <hr>
+  <div id="vcomments" style="margin-top: 50px;"></div>
+  <script src="/js/Valine.min.js"></script>
+  <script>
+    new Valine({
+      el: '#vcomments',
+      appId: '2RPLQGvxicb06F127wr1yjsM-9Nh9j0Va',
+      appKey: 'GOiYet2qQ4iPWbC93HrgFmpc',
+      visitor: true,
+      placeholder: "发表下你的看法吧"
+    })
+  </script>
+
+  <link rel="stylesheet" href="/css/github.min.css">
+  <script src="/js/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+          <div class="row mt-2">
+  
+  <div class="eight columns">
+    <p id="madewith">
+      <a class="footer-link icon" href="https://hexo.io" target="_blank" style="text-decoration: none" rel="external nofollow noopener noreferrer" aria-label="Hexo.io">
+      </a>
+       ©
+      <a href="http://w3cay.com" target="_blank" rel="noreferrer">安望云海</a>
+      <a href="https://beian.miit.gov.cn" target="_blank" rel="external nofollow noopener noreferrer">豫ICP备2022016638号-1</a>
+    </p>
+    
+  </div>
+
+  <!-- Sepcial thanks to https://simpleicons.org/ for the icons -->
+  <div class="four columns mb-3 posisi">
+    
+    <a class="ml-0 footer-link icon" href="https://github.com/w3cay" target="_blank" style="text-decoration: none" rel="external nofollow noopener noreferrer" aria-label="GitHub">
+      <svg class="github svg-hov" width="18" height="18" role="img" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <title>GitHub</title>
+        <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+      </svg>
+    </a>
+     
+    <a class="ml-0 footer-link icon" href="https://w3cay.com/atom.xml" target="_blank" style="text-decoration: none" rel="noreferrer" aria-label="rss">
+      <svg t="1647683387613" class="icon svg-hov" viewbox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1287" width="16" height="16">
+        <path d="M832.512 63.488q26.624 0 49.664 10.24t40.448 27.648 27.648 40.448 10.24 49.664l0 704.512q0 26.624-10.24 49.664t-27.648 40.448-40.448 27.648-49.664 10.24l-704.512 0q-26.624 0-49.664-10.24t-40.448-27.648-27.648-40.448-10.24-49.664l0-704.512q0-26.624 10.24-49.664t27.648-40.448 40.448-27.648 49.664-10.24l704.512 0zM188.416 923.648q19.456 0 36.864-7.168t30.208-19.968 19.968-30.208 7.168-36.864-7.168-36.864-19.968-30.208-30.208-19.968-36.864-7.168q-20.48 0-37.376 7.168t-30.208 19.968-20.48 30.208-7.168 36.864 7.168 36.864 20.48 30.208 30.208 19.968 37.376 7.168zM446.464 897.024l36.864 0q15.36 0 30.208 0.512t31.232 0.512 36.864-1.024q0-93.184-35.84-175.616t-97.28-143.872-143.872-96.768-175.616-35.328q-1.024 24.576-1.024 39.936l0 28.672q0 14.336 0.512 29.184t0.512 37.376q65.536 0 123.392 24.576t100.864 67.584 68.096 100.864 25.088 123.392zM707.584 894.976q36.864 0 49.152 0.512t18.432 1.536 15.872 1.024 41.472-2.048q0-145.408-55.296-272.896t-150.528-222.72-223.232-150.528-273.408-55.296q-1.024 25.6-1.024 36.864l0 16.384q0 4.096 0.512 5.632t0.512 7.168 0.512 18.432 0.512 40.448q119.808 0 224.768 45.056t183.296 123.392 123.392 183.296 45.056 223.744z" p-id="1288" fill="#78aa50"/>
+      </svg>
+    </a>
+    
+  </div>
+  
+</div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <script src="/js/nanobar.min.js"></script>
+  
+  <script src="/js/pic.min.js"></script>
+  
+  <script>
+    var options = {
+      classname: 'nanobar',
+      id: 'myNanobar'
+    };
+    var nanobar = new Nanobar(options);
+    nanobar.go(30);
+    nanobar.go(76);
+    nanobar.go(100);
+  </script>
+
+</body>
+
+</html>
