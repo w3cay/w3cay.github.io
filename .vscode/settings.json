@@ -1,0 +1,31 @@
+{
+    "workbench.colorCustomizations": {
+        "[Brackets Light Pro]": {
+            "editor.selectionBackground": "#a5a6e7",
+            "editor.background": "#f3f9f4",
+            "sideBar.background": "#f3f9f4",
+            "activityBar.background": "#c5cdc6",
+            "terminal.background": "#f5f2f2",
+            "terminal.foreground": "#242322",
+            "terminal.ansiBlack": "#e1f6fc",
+            "terminal.ansiBrightBlack": "#665C54",
+            "terminal.ansiBrightBlue": "#0D6678",
+            "terminal.ansiBrightCyan": "#8BA59B",
+            "terminal.ansiBrightGreen": "#237e02",
+            "terminal.ansiBrightMagenta": "#8F4673",
+            "terminal.ansiBrightRed": "#FB543F",
+            "terminal.ansiBrightWhite": "#FDF4C1",
+            "terminal.ansiBrightYellow": "#FAC03B",
+            "terminal.ansiBlue": "#00a1f9",
+            "terminal.ansiCyan": "#8BA59B",
+            "terminal.ansiGreen": "#95C085",
+            "terminal.ansiMagenta": "#8F4673",
+            "terminal.ansiRed": "#FB543F",
+            "terminal.ansiWhite": "#A89984",
+            "terminal.ansiYellow": "#FAC03B"
+        },
+        "activityBar.background": "#2E3002",
+        "titleBar.activeBackground": "#404303",
+        "titleBar.activeForeground": "#FBFDCF"
+    }
+}
