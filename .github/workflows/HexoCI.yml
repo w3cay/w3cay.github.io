@@ -35,7 +35,7 @@ jobs:
           hexo clean
           hexo d -g
       - name: 📂 Sync files
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
           server: vhost276.cloudvhost.cn
           username: webmaster@HA675619
