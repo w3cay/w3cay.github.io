@@ -41,4 +41,4 @@ jobs:
           username: webmaster@HA675619
           password: ${{ secrets.FTP_PSW }}
           local-dir: ./public/
-          server-dir: ./WEB_SYNC/
+          server-dir: ./WEB/SYNC/
