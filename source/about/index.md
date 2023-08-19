@@ -4,7 +4,7 @@ subtitle: 记录我的所做所想与成长
 type: product
 ---
 <div><p style="float: left; margin-right: 20px">
- <img src="https://tva1.sinaimg.cn/large/008i3skNgy1gynp755ah3j30n00n0t9g.jpg" width="100" />
+ <img src="../images/008i3skNgy1gynp755ah3j30n00n0t9g.jpg" width="100" />
 </p>
 </div>
 

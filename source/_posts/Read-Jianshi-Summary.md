@@ -1,11 +1,10 @@
 ---
-title: 读《见识》摘录与随想
+title: 《见识》文摘
 subtitle: 你能走多远，取决于你的见识
-description: 读《见识》摘录与随想
+description: 《见识》文摘
 abbrlink: 65e1bca0
 date: 2020-02-07 00:05:45
 tags:
-  - 读书笔记
   - 文摘
 cover: https://ftp.bmp.ovh/imgs/2019/11/07e3c50447dbf665.jpg
 ---

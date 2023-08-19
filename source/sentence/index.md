@@ -1,6 +1,9 @@
 ---
-title: 想法
-description: 在此分享我的摘录和想法
+title: 文摘汇总整理
+description: 
+tags:
+  - 文摘
+
 ---
 
 ### 在此分享我的摘录和想法
