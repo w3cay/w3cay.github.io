@@ -1,2 +1,3 @@
-# w3cay.github.io
-我的个人主页，欢迎访问 ➡️ https://w3cay.com
+# w3cay.github.io [![Hexo Deploy CI](https://github.com/w3cay/w3cay.github.io/actions/workflows/HexoCI.yml/badge.svg)](https://github.com/w3cay/w3cay.github.io/actions/workflows/HexoCI.yml)
+
+我的个人主页，欢迎访问 ➡️ http://w3cay.com
