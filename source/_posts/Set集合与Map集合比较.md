@@ -8,13 +8,13 @@ date: 2018-12-15 16:58:09
 ---
 
 
-| 特性比较 | Set| WeakSet | Map  | WeakMap 
+| 特性比较 | Set| WeakSet | Map  | WeakMap 
 |:-----------: |:-------------:| :---------:|:-----------:| :--------------:|
 |初始化| ```new Set([1,2,3,4])``` | ```new WeakSet([1,2,3,4])```  | ```new Map([["name", "Bright"], ["sex", "男"]])```  | ```new WeakMap([["name", "Bright"], [" sex", "男"]])```
-|定义 | 一种包含多个非重复值的有序列表 | 是一种特殊的 Set 集合，集合**只支持存放对象弱引用**  | 一种多个键值对组成的有序集合 | 是一种特殊的 Map 集合，**只支持对象类型的键名**
+|定义 | 一种包含多个非重复值的有序列表 | 是一种特殊的 Set 集合，集合**只支持存放对象弱引用**  | 一种多个键值对组成的有序集合 | 是一种特殊的 Map 集合，**只支持对象类型的键名**
 |[可否迭代](#可否迭代)| 是 | 否  | 是 | 否
 |引用特性 | 成员对象[强引用](#强引用) | 成员对象[弱引用](#弱引用) | 成员对象[强引用](#强引用)  | 成员对象[弱引用](#弱引用)
-|属性方法| add() has()  delete() clear() forEach() keys() values() size | add() has() delete() | set()  get()  has()  delete() clear() forEach() keys() values() size | set () get() has() delete()
+|属性方法| add() has()  delete() clear() forEach() keys() values() size | add() has() delete() | set()  get()  has()  delete() clear() forEach() keys() values() size | set () get() has() delete()
 |使用建议| [由于对象判断属性存在的局限性](#对象局限性)，此集合更适用于检测给定的值在集合中是否存在。同时基于本身无重复值的特性，可做数组的去重 | 只可存放对象类型，并方便引用对象的跟踪  | 用于处理键值对数据，存放需要经常存取的数据 | 用于处理键值对数据，键名只可存放对象类型，并方便引用对象的跟踪，最大用途是保存 Web 页面的 DOM 元素
 
 -----
